@@ -1,0 +1,27 @@
+<div class="horizontal div-centered-top-margin">
+  <div class="left-panel">
+    <ul class="menu menu-on-page white-text">
+      <li class="white-text tooltip-transparent">
+        <a (click)="switchAction(1);">Add post </a>
+      </li>
+      <li class="white-text tooltip-transparent">
+        <a (click)="switchAction(2);">My Posts </a>
+      </li>
+      <li class="white-text tooltip-transparent">
+        <a (click)="switchAction(3);">Find Post</a>
+      </li>
+    </ul>
+  </div>
+  <div class="span"></div>
+  <div class="right-panel ">
+    <div *ngIf="action===1">
+      <app-add-post></app-add-post>
+    </div>
+    <div *ngIf="action===2">
+      <app-posts></app-posts><!-- [user]="this.user" user from cookie or sth-->
+    </div>
+    <div *ngIf="action===3">
+<app-search-posts></app-search-posts>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<p>main-page works!</p>
+<div>
+  <i class="fa-square-o"></i><i class="fa-square-o"></i>
+  <i class="fa-blackberry"></i>
+  <i class="fa-square-o"></i><i class="fa-square-o"></i>
+  <i class="fa-square-o"></i><i class="fa-square-o"></i>
+  <i class="fa-square-o"></i><i class="fa-square-o"></i>
+</div>
+<button (click)="click()">Click me!</button>
+<div>
+  <ul *ngIf="users">
+    <li *ngFor="let user of users.data">
+      <img [src]="user.avatar">
+      <p> {{user.first_name}} {{user.last_name}}</p>
+    </li>
+
+  </ul>
+</div>

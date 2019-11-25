@@ -1,0 +1,45 @@
+<!--<div *ngIf="data">
+  Tytuł {{data.title}}
+  <ul>
+    <li *ngFor="let tag of data.tags">Tagi: {{tag}}</li>
+  </ul>
+  <div>
+    Zdjecie: {{data.backgroundImage}}
+    <div>
+      Content: {{data.postContent}}
+    </div>
+  </div>
+</div>-->
+<!--<div *ngIf="data">
+  <input name="chyuj1" type="text" [ngModel]="data.title"/>
+  <input name="chyuj2" type="text" [ngModel]="data.postContent"/>
+  <input name="chyuj3" type="text" [ngModel]="data.tags"/>
+</div>-->
+<div *ngIf="data" id="post" class="post div-centered-top-margin">
+  <div id="title" class="post-section post-title">
+    {{data.title}}
+  </div>
+
+  <div id="backgroundImage" class="post-section">
+
+  </div>
+  <div id="postContent" class="post-section div-centered post-textarea">
+    {{data.postContent}}
+  </div>
+  <div id="tags" class="post-section">
+      <div class="horizontal-group post-toolbar">
+      <div class="span">Tagi:</div>
+        <li class="tag" *ngFor="let tag of data.tags">{{tag}}  </li>
+      </div>
+  </div>
+    <div id="postToolbar" class="horizontal-group post-toolbar justify-content">
+      <div class="horizontal-item">Zobacz wszystkie posty autora</div>
+      <div class="horizontal-span"></div>
+      <div class="horizontal-item">Obserwuj autora</div>
+      <div class="horizontal-span"></div>
+      <div class="horizontal-item">Zobacz profil autora</div>
+      <div class="horizontal-span"></div>
+      <div class="horizontal-item">Zglos naruszenie zasad</div>
+    </div>
+</div>
+

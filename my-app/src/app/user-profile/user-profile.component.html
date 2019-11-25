@@ -1,0 +1,20 @@
+<div>
+  <img id="userImg" src="assets/icons/user.png"  (click)="showMenu()"/>
+  <div class="content-centered">
+    <ul (focusout)="showMenu()" [hidden]="menuHidden" class="user-menu menu span" id="user-menu">
+      <li class="tooltip-transparent menu-element">
+        <a class="menu-item-link" routerLink="/useraccount">My Profile</a>
+      </li>
+      <li class="tooltip-transparent menu-element">
+        <a class="menu-item-link" routerLink="/usersettings">Settings</a>
+      </li>
+      <li class="tooltip-transparent menu-element">
+        <a class="menu-item-link" routerLink="/management">Blog management</a>
+      </li>
+      <li class="menu-element click-disabled">───────</li>
+      <li class="tooltip-transparent menu-element">
+        <a class="menu-item-link" routerLink="/main">Logout</a>
+      </li>
+    </ul>
+  </div>
+</div>

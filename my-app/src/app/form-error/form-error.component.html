@@ -1,0 +1,35 @@
+<div class="form-error" *ngIf="control && control.errors && (control.dirty || control.touched)">
+  <div *ngIf="control.errors.required">
+    <i class="fas fa-exclamation"></i>
+    <h4 class="error-content error-text">{{controlName}} is required</h4>
+  </div>
+  <div *ngIf="control.errors.unique">
+    <img class="error-content" src="https://img.icons8.com/color/48/000000/high-priority.png">
+    <h1 class="error-content error-text">{{controlName}} {{control.errors.unique}}  is invalid</h1>
+  </div>
+  <div *ngIf="control.errors.lessThen">
+    <img class="error-content" src="https://img.icons8.com/color/48/000000/high-priority.png">
+    <h1 class="error-content error-text">{{controlName}} {{control.errors.lessThen}} is invalid</h1>
+  </div>
+  <div *ngIf="control.errors.greaterThan">
+    <img class="error-content" src="https://img.icons8.com/color/48/000000/high-priority.png">
+    <h1 class="error-content error-text">{{controlName}} {{control.errors.greaterThan}} is invalid</h1>
+  </div>
+  <div *ngIf="control.errors.email">
+    <img class="error-content" src="https://img.icons8.com/color/48/000000/high-priority.png">
+    <h1 class="error-content error-text">{{controlName}} {{control.errors.email}} is invalid</h1>
+  </div>
+  <div *ngIf="control.errors.mobile">
+    <img class="error-content" src="https://img.icons8.com/color/48/000000/high-priority.png">
+    <h1 class="error-content error-text">{{controlName}} {{control.errors.mobile}} is invalid</h1>
+  </div>
+  <div *ngIf="control.errors.confirmPassword">
+    <img class="error-content" src="https://img.icons8.com/color/48/000000/high-priority.png">
+    <h1 class="error-content error-text">{{controlName}} {{control.errors.confirmPassword}} is invalid</h1>
+  </div>
+  <div *ngIf="control.errors.lessThen">
+    <img class="error-content" src="https://img.icons8.com/color/48/000000/high-priority.png">
+    <h1 class="error-content error-text">{{controlName}} {{control.errors.minlength}} is invalid</h1>
+  </div>
+</div>
+

@@ -1,0 +1,33 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form form-big div-centered-top-margin">
+
+  <div class="form-field">
+    <label class="form-label" id="loginLabel" for="login">Login:</label>
+    <input formControlName="login" class="form-control"
+           id="login" placeholder="Enter your login"/>
+
+  </div>
+  <app-form-error [control]="formGroup.get('login')"></app-form-error>
+  <div class="form-field">
+    <label class="form-label" id="passwordLabel" for="password">Password:</label>
+    <input formControlName="password" class="form-control" type="password" id="password"
+           placeholder="********"/>
+
+  </div>
+  <app-form-error [controlName]="'password'" [control]="formGroup.get('password')"></app-form-error>
+
+  <input [disabled]="!isValid()" type="submit" value="Sign In!" id="submit"
+         class="submit-button button  tooltip-transparent"/>
+  <div>
+    <h2 class="white-text">Don't have an account?</h2>
+  </div>
+
+  <div>
+    <div class="in-form-background">
+      <button id="register-button" class="button tooltip-transparent medium-size-text"
+              routerLink="../register">Sign Up!
+      </button>
+    </div>
+  </div>
+
+</form>
+

@@ -1,0 +1,40 @@
+<div class="form">
+  <div class="form-field">
+    <input class=" stretch" type="search" placeholder="Search by title ..."/>
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </div>
+  <div class="white-text">
+    <label for="filters">Opcje filtrowania</label>
+    <button id="filters" class="small-combo-button" (click)="dropdownStateChange()">
+      <i *ngIf="!dropped" class="icon-fit fa fa-caret-square-o-down"></i>
+      <i *ngIf="dropped" class="icon-fit fa fa-caret-square-o-up"></i>
+    </button>
+  </div>
+  <div>
+    <div *ngIf="dropped" class="form search-criteria white-text">
+      <div class="form-field">
+        <label for="title">Title:</label>
+        <input id="title" class="form-control" type="text"/>
+
+      </div>
+      <div class="form-field">
+        <label for="author">Author:</label>
+        <input id="author" class="form-control" type="text" placeholder="Author name..."/>
+
+      </div>
+      <div class="form-field"> <!--todo export to standalone component-->
+        <label for="tags">Tags:</label>
+        <input class="form-control" id="tags" placeholder="Type tags here, divided by a comma ','"/>
+      </div>
+
+      <div class="form-field">
+        <label for="publishDateFrom">Data opublikowania</label>
+        <input id="publishDateFrom" type="date">
+        <input type="date">
+        <label for="maxPerPage">Max results: </label>
+        <input id="maxPerPage" type="number"/>
+      </div>
+    </div>
+  </div>
+
+</div>

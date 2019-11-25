@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup" class="form">
+  <div class="form-field">
+    <input formControlName="title" class="form-control" type="text" id="title"
+           placeholder="Insert title here..." required="true"/>
+  </div>
+  <div class="form-field">
+    <input formControlName="tags" class="form-control" id="tags" placeholder="Type tags here, divided by a comma ','"/>
+  </div>
+  <div class="form-field">
+    <label class="file-input-label tooltip-transparent" for="backgroundImage">Upload background image</label>
+    <input formControlName="backgroundImage" class="file-input" id="backgroundImage" type="file"
+           placeholder="Load post's background image"/>
+  </div>
+  <div class="toolbar"></div>
+  <div class="form-field">
+    <textarea formControlName="postContent" class="form-control" id="postContent"
+              placeholder="Add your content here"></textarea>
+  </div>
+  <!---->
+  <input type="submit" value="Preview" id="preview" [disabled]="!isFormValid()"
+         class="submit-button button tooltip-transparent" (click)="routeToPreview()"/>
+
+  <input type="submit" value="Publish" id="submit" [disabled]="!isFormValid()"
+         class="submit-button button tooltip-transparent"/>
+
+</form>

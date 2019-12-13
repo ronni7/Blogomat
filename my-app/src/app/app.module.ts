@@ -20,6 +20,8 @@ import { PostPreviewComponent } from './post-preview/post-preview.component';
 import { PostsComponent } from './posts/posts.component';
 import { SearchPostsComponent } from './search-posts/search-posts.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     PostPreviewComponent,
     PostsComponent,
     SearchPostsComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    DatePickerComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

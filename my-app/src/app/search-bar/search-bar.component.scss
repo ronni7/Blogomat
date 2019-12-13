@@ -1,0 +1,20 @@
+#filter,#search {
+  font-size: 20px;
+}
+
+#authorLabel, #tagsLabel, #publishDateFromLabel, #titleLabel {
+  width: 4.5em;
+}
+
+#maxPerPage {
+  max-width: 4em;
+}
+
+#maxPerPagelabel {
+  width: 5.5em;
+}
+
+#right-panel {
+  display: flex;
+  flex: 2;
+}

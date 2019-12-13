@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-search-posts',
@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-posts.component.scss']
 })
 export class SearchPostsComponent implements OnInit {
+  @Input()
+  authorLocked: boolean;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

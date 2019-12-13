@@ -7,6 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
+  visible = true;
   menuHidden = true;
 
   constructor() {
@@ -18,4 +19,5 @@ export class UserProfileComponent implements OnInit {
   showMenu() {
     this.menuHidden = !this.menuHidden;
   }
+
 }

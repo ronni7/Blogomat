@@ -44,8 +44,4 @@ export class AddPostComponent implements OnInit {
       state: {data: this.getFormData()}
     });
   }
-  showPreview()
-  {
-    
-  }
 }

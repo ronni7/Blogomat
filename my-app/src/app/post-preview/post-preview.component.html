@@ -1,20 +1,3 @@
-<!--<div *ngIf="data">
-  Tytuł {{data.title}}
-  <ul>
-    <li *ngFor="let tag of data.tags">Tagi: {{tag}}</li>
-  </ul>
-  <div>
-    Zdjecie: {{data.backgroundImage}}
-    <div>
-      Content: {{data.postContent}}
-    </div>
-  </div>
-</div>-->
-<!--<div *ngIf="data">
-  <input name="chyuj1" type="text" [ngModel]="data.title"/>
-  <input name="chyuj2" type="text" [ngModel]="data.postContent"/>
-  <input name="chyuj3" type="text" [ngModel]="data.tags"/>
-</div>-->
 <div *ngIf="data" id="post" class="post div-centered-top-margin">
   <div id="title" class="post-section post-title">
     {{data.title}}

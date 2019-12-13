@@ -1,1 +1,75 @@
-<p>about works!</p>
+<div id="aboutApp" class="form div-centered-top-margin white-text">
+  <h1 id="aboutTitle" class="title">About app</h1>
+  <div id="aboutContent">
+    Lorem Ipsum
+    Images
+    Plugins
+    Generators
+    English
+    Deutsch
+    Español
+    Français
+    Русский
+
+    Lorem Ipsum Generator
+
+    Generate Lorem Ipsum placeholder text. Select the number of characters, words, sentences or paragraphs, and hit
+    generate!
+    Generated Lorem Ipsum
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Nulla pellentesque dignissim enim sit amet venenatis urna cursus eget. Elit eget gravida cum sociis natoque
+    penatibus et magnis. Vel risus commodo viverra maecenas accumsan lacus vel facilisis. Adipiscing elit pellentesque
+    habitant morbi tristique senectus et netus. Sit amet facilisis magna etiam tempor orci eu lobortis elementum. Vitae
+    tortor condimentum lacinia quis. Pellentesque habitant morbi tristique senectus et netus et malesuada. Mi ipsum
+    faucibus vitae aliquet. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Pulvinar
+    pellentesque habitant morbi tristique. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a. Nulla
+    posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. At augue eget arcu dictum varius duis at.
+    Venenatis
+    tellus in metus vulputate. Arcu risus quis varius quam quisque. Arcu non sodales neque sodales ut etiam sit.
+    Faucibus
+    purus in massa tempor. Justo donec enim diam vulputate ut pharetra sit amet. Velit scelerisque in dictum non.
+
+    Sollicitudin tempor id eu nisl nunc. Purus sit amet luctus venenatis lectus magna fringilla urna porttitor. Ut etiam
+    sit amet nisl purus. Et ultrices neque ornare aenean. Neque sodales ut etiam sit amet nisl. Nisi est sit amet
+    facilisis magna. Aliquet nibh praesent tristique magna sit amet purus gravida quis. Lacinia quis vel eros donec ac
+    odio tempor orci. Lectus arcu bibendum at varius vel pharetra vel turpis nunc. Praesent semper feugiat nibh sed
+    pulvinar. Elit duis tristique sollicitudin nibh. Nec ultrices dui sapien eget mi proin sed libero. In cursus turpis
+    massa tincidunt dui ut.
+    Images
+    Plugins
+    Generators
+
+    Share the Lorem
+
+    Wasai
+    Privacy
+  </div>
+</div>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" id="contact" class="form form-big div-centered-top-margin">
+  <h1 id="title" class="title content-centered">Contact us</h1>
+  <div class="form-field">
+    <label id="firstNameLabel" for="firstName" class="form-label">First name:</label>
+    <input formControlName="firstName" id="firstName" class=" form-control"/>
+  </div>
+  <div class="form-field">
+    <label id="lastNameLabel" for="lastName" class="form-label">Last name:</label>
+    <input formControlName="lastName" id="lastName" class=" form-control"/>
+  </div>
+  <div class="form-field">
+    <label id="emailLabel" for="email" class="form-label">E-mail:</label>
+    <input formControlName="email" id="email" class="form-control"/>
+  </div>
+  <div class="form-field">
+    <label id="subjectLabel" for="subject" class="form-label">Subject:</label>
+    <select formControlName="subject" id="subject" class=" form-control">
+      <option value="test">test</option>
+    </select>
+  </div>
+  <div class="form-field">
+    <label id="messageLabel" for="message" class="form-label">Message:</label>
+    <textarea formControlName="message" id="message" class="post-textarea form-control"></textarea>
+  </div>
+  <input type="submit" value="Send message" id="submit"
+         class="submit-button button tooltip-transparent"/>
+</form>

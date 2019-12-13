@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Post} from '../../model/Post';
 import {User} from '../../model/User';
 import {TestHttpServiceService} from '../test-http-service.service';
-import {SearchCriteria} from '../search.criteria';
+import {SearchCriteria} from '../../model/SearchCriteria';
 
 @Component({
   selector: 'app-posts',
@@ -14,6 +14,8 @@ export class PostsComponent implements OnInit {
   searchCriteria: SearchCriteria = new SearchCriteria();
   @Input()
   user: User;
+  @Input()
+  perRow = 1;
 
   constructor(private httpService: TestHttpServiceService) {
     this.searchCriteria.user = this.user;

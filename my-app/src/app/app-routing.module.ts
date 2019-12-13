@@ -8,6 +8,7 @@ import {RegisterPageComponent} from './register-page/register-page.component';
 import {ManagementComponent} from './management/management.component';
 import {PostPreviewComponent} from './post-preview/post-preview.component';
 import {PostsComponent} from './posts/posts.component';
+import {ProfileComponent} from './profile/profile.component';
 
 
 
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterPageComponent},
   {path: 'management', component: ManagementComponent},
   {path: 'preview', component: PostPreviewComponent},
-  {path: 'posts', component: PostsComponent}
+  {path: 'posts', component: PostsComponent},
+  {path: 'account', component: ProfileComponent}
 ];
 
 @NgModule({

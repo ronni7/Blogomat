@@ -13,15 +13,17 @@
     </ul>
   </div>
   <div class="span"></div>
-  <div class="right-panel ">
+  <div class="right-panel">
     <div *ngIf="action===1">
       <app-add-post></app-add-post>
     </div>
     <div *ngIf="action===2">
-      <app-posts></app-posts><!-- [user]="this.user" user from cookie or sth-->
+      <div class="form-style-background">
+        <app-posts [perRow]="1"></app-posts><!-- [user]="this.user" user from cookie or sth-->
+      </div>
     </div>
     <div *ngIf="action===3">
-<app-search-posts></app-search-posts>
+      <app-search-posts [authorLocked]="true"></app-search-posts>
     </div>
   </div>
 </div>

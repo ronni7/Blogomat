@@ -1,5 +1,24 @@
-<div>
+<div *ngIf="perRow===1">
   <div *ngFor="let post of posts">
     <app-post-preview [data]="post"></app-post-preview>
   </div>
 </div>
+<div *ngIf="perRow===2">
+  <div *ngFor="let post of posts; let i = index">
+    <div *ngIf="i%2===0" class="horizontal">
+      <app-post-preview *ngIf="i< posts.length" [data]="posts[i]"></app-post-preview>
+      <app-post-preview *ngIf="i+1< posts.length" [data]="posts[i+1]"></app-post-preview>
+    </div>
+  </div>
+</div>
+<div *ngIf="perRow===3">
+  <div *ngFor="let post of posts; let i = index">
+    <div *ngIf="i%3===0" class="horizontal">
+      <app-post-preview *ngIf="i< posts.length" [data]="posts[i]"></app-post-preview>
+      <app-post-preview *ngIf="i+1< posts.length" [data]="posts[i+1]"></app-post-preview>
+      <app-post-preview *ngIf="i+2< posts.length" [data]="posts[i+2]"></app-post-preview>
+    </div>
+  </div>
+</div>
+
+

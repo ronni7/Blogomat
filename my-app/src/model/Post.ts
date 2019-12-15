@@ -1,11 +1,20 @@
 export class Post {
-  constructor(title: string, tags: Array<any>, backgroundImage: File, postContent: string) {
+
+  private _title: string;
+  private _tags: Array<any>;
+  private _backgroundImage?: File;
+  private _postContent: string;
+  private _publishDate: Date;
+  private _author: string;
+
+  constructor(title: string, tags: Array<any>, backgroundImage: File, postContent: string, publishDate: Date, author: string) {
     this._title = title;
     this._tags = tags;
     this._backgroundImage = backgroundImage;
     this._postContent = postContent;
+    this._publishDate = publishDate;
+    this._author = author;
   }
-
 
   get postContent(): string {
     return this._postContent;
@@ -39,9 +48,19 @@ export class Post {
     this._title = value;
   }
 
-  private _title: string;
-  private _tags: Array<any>;
-  private _backgroundImage?: File;
-  private _postContent: string;
+  get publishDate(): Date {
+    return this._publishDate;
+  }
 
+  set publishDate(value: Date) {
+    this._publishDate = value;
+  }
+
+  get author(): string {
+    return this._author;
+  }
+
+  set author(value: string) {
+    this._author = value;
+  }
 }

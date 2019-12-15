@@ -7,4 +7,8 @@ export class UserDetails {
   registered: Date;
   postsCount: number;
   image: any;
+  facebook: string;
+  twitter: string;
+  snapchat: string;
+  instagram: string;
 }

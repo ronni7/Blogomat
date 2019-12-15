@@ -1,27 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { TestComponent } from './test/test.component';
-import { AboutComponent } from './about/about.component';
-import { MainPageComponent } from './main-page/main-page.component';
-import { LoginPageComponent } from './login-page/login-page.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {TestComponent} from './test/test.component';
+import {AboutComponent} from './about/about.component';
+import {MainPageComponent} from './main-page/main-page.component';
+import {LoginPageComponent} from './login-page/login-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { RegisterPageComponent } from './register-page/register-page.component';
-import { FormErrorComponent } from './form-error/form-error.component';
+import {RegisterPageComponent} from './register-page/register-page.component';
+import {FormErrorComponent} from './form-error/form-error.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
-import { FooterComponent } from './footer/footer.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { ManagementComponent } from './management/management.component';
-import { AddPostComponent } from './add-post/add-post.component';
-import { PostPreviewComponent } from './post-preview/post-preview.component';
-import { PostsComponent } from './posts/posts.component';
-import { SearchPostsComponent } from './search-posts/search-posts.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { DatePickerComponent } from './date-picker/date-picker.component';
-import { ProfileComponent } from './profile/profile.component';
+import {FooterComponent} from './footer/footer.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
+import {ManagementComponent} from './management/management.component';
+import {AddPostComponent} from './add-post/add-post.component';
+import {PostPreviewComponent} from './post-preview/post-preview.component';
+import {PostsComponent} from './posts/posts.component';
+import {SearchPostsComponent} from './search-posts/search-posts.component';
+import {SearchBarComponent} from './search-bar/search-bar.component';
+import {DatePickerComponent} from './date-picker/date-picker.component';
+import {ProfileComponent} from './profile/profile.component';
+import {DatePipe} from '@angular/common';
+import { SocialMediaComponent } from './social-media/social-media.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ProfileComponent } from './profile/profile.component';
     SearchPostsComponent,
     SearchBarComponent,
     DatePickerComponent,
-    ProfileComponent
+    ProfileComponent,
+    SocialMediaComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     AngularFontAwesomeModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

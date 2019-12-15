@@ -2,20 +2,20 @@
   <h1 class="content-centered">Personal data</h1>
   <div class="horizontal">
     <div class="left-panel">
-      <div id="profileImage" >
+      <div id="profileImage">
         <div class="content-centered"> <!--[(ngModel)]="user.image"-->
-          <img *ngIf="!user.image"  class="profile-image" src="assets/icons/user-icon-large.png">
-          <img *ngIf="user.image"  class="profile-image" src="assets/icons/doge.png">
+          <img *ngIf="!user.image" class="profile-image" src="assets/icons/user-icon-large.png">
+          <img *ngIf="user.image" class="profile-image" src="assets/icons/doge.png">
         </div>
         <div class="button align-center">
-          <label class="file-input-label tooltip-transparent" for="backgroundImage">Change profile picture</label>
+          <label class="file-input-label tooltip-transparent" for="backgroundImage">Change</label>
           <input class="file-input" id="backgroundImage" type="file"
                  placeholder="Load post's background image"/>
         </div>
       </div>
     </div>
     <div class="right-panel">
-        <div class="form-field">
+      <div class="form-field">
         <label class="form-label" id="usernameLabel" for="username">Username:</label>
         <input id="username" class="form-control" type="text" maxlength="32"
                required="true" [(ngModel)]="user.username"/>
@@ -38,20 +38,51 @@
       <div class="form-field">
         <label class="form-label" id="registeredLabel" for="registered">Registered:</label>
         <input id="registered" class="form-control" type="date" maxlength="32"
-               required="true" [ngModel]="user.registered | date:'yyyy-MM-dd'" (ngModelChange)="user.registered=$event"/>
-        <label class="form-label" id="postsCountLabel" for="postsCount">PostsCount:</label>
-        <input id="postsCount" class="form-control" type="text" maxlength="32"
-               required="true" [(ngModel)]="user.postsCount"/>
+               required="true" [ngModel]="user.registered | date:'yyyy-MM-dd'"
+               (ngModelChange)="user.registered=$event" disabled/>
+        <label class="form-label" id="postsCountLabel" for="postsCount">Posted:</label>
+        <input id="postsCount"  class="form-control" type="text" maxlength="32"
+               required="true" [(ngModel)]="user.postsCount" disabled/>
       </div>
       <div class="content-centered">
-        <input type="submit" value="Save changes" id="submit" class="submit-button button tooltip-transparent" (click)="saveChanges()"/>
+        <input type="submit" value="Save changes" id="submit" class="submit-button button tooltip-transparent"
+               (click)="saveChanges()"/>
       </div>
     </div>
   </div>
 </div>
-<div id="section2" class="form form-style-background white-text content-centered align-center">
-  <h1 class="content-centered">Blog statistics</h1>
-<!--  todo tu wykresy-->
-  <canvas  #canvas id="chartTest"></canvas>
+<div class="horizontal div-centered-top-margin">
+  <div id="section2" class="form form-style-background white-text content-centered align-center">
+    <h1 class="content-centered">Blog statistics</h1>
+    <!--  todo tu wykresy-->
+    <canvas #canvas id="chartTest"></canvas>
+  </div>
+  <div class="span"></div>
+  <div id="section3" class="form-style-background white-text">
+    <h1 class="content-centered">Social media</h1>
+    <div class="form-field">
+      <label class="form-label" id="facebookLabel" for="facebook"><i class="icon-fit fa fa-facebook-square"></i></label>
+      <input id="facebook" class="form-control" type="text" maxlength="32"
+             required="true" [(ngModel)]="user.facebook"/>
+    </div>
+    <div class="form-field">
+      <label class="form-label" id="instagramLabel" for="instagram"><i class="icon-fit fa fa-instagram"></i></label>
+      <input id="instagram" class="form-control" type="text" maxlength="32"
+             required="true" [(ngModel)]="user.instagram"/>
+    </div>
+    <div class="form-field align-center">
+      <label class="form-label " id="snapchatLabel" for="snapchat"><i class="icon-fit fa fa-snapchat-square"></i></label>
+      <input id="snapchat" class="form-control" type="text" maxlength="32"
+             required="true" [(ngModel)]="user.snapchat"/>
+    </div>
+    <div class="form-field">
+      <label class="form-label" id="twitterLabel" for="twitter"><i class="icon-fit fa fa-twitter-square"></i></label>
+      <input id="twitter" class="form-control" type="text" maxlength="32"
+             required="true" [(ngModel)]="user.twitter"/>
+    </div>
+    <div class="content-centered">
+      <input type="submit" value="Save changes" id="submitSocialMedia"
+             class="submit-button button tooltip-transparent" (click)="saveChanges()"/>
+    </div>
+  </div>
 </div>
-

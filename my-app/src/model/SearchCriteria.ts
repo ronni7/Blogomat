@@ -6,7 +6,7 @@ export class SearchCriteria {
   page: number = 1;
   dataPerPage: number;
   tags: any[];
-  author: User; // or User // or id
+  author: string; // or User // or id
   title: string;
   publishDateFrom: Date;
   publishDateTo: Date;

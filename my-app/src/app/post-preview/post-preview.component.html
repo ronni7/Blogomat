@@ -3,6 +3,11 @@
     {{data.title}}
   </div>
 
+  <div id="date" class="white-text">
+    Dodany: {{data.publishDate | date:'yyyy-MM-dd'}}
+    przez: {{data.author}}
+  </div>
+
   <div id="backgroundImage" class="post-section">
 
   </div>
@@ -10,19 +15,26 @@
     {{data.postContent}}
   </div>
   <div id="tags" class="post-section">
-      <div class="horizontal-group post-toolbar">
+    <div class="horizontal-group post-toolbar">
       <div class="span">Tagi:</div>
-        <li class="tag" *ngFor="let tag of data.tags">{{tag}}  </li>
-      </div>
-  </div>
-    <div id="postToolbar" class="horizontal-group post-toolbar justify-content">
-      <div class="horizontal-item">Zobacz wszystkie posty autora</div>
-      <div class="horizontal-span"></div>
-      <div class="horizontal-item">Obserwuj autora</div>
-      <div class="horizontal-span"></div>
-      <div class="horizontal-item">Zobacz profil autora</div>
-      <div class="horizontal-span"></div>
-      <div class="horizontal-item">Zglos naruszenie zasad</div>
+      <li class="tag" (click)="searchCurrentTag(tag)" *ngFor="let tag of data.tags">{{tag}}  </li>
     </div>
+  </div>
+  <div id="postToolbar" class="horizontal-group post-toolbar justify-content toolbar-item-centered">
+    <div class="horizontal-item horizontal toolbar-item-centered">
+      <i (click)="likePost(1)" id="likeIt" class="icon-fit fa fa-thumbs-o-up"></i>
+      <div>{{getLikes(data.title)}}</div><!-- todo post id-->
+    </div>
+    <div class="horizontal-span"></div>
+    <div class="horizontal-item toolbar-item-centered">
+      <app-social-media></app-social-media>
+    </div>
+    <div class="horizontal-span vertical"></div>
+    <div class="horizontal-item toolbar-item-centered menu-item " routerLink="/account"><i id="user" class="icon-fit fa fa-user"></i></div>
+    <div class="horizontal-span"></div>
+    <div class="horizontal-item toolbar-item-centered menu-item" routerLink="/about"><i id="report" class="icon-fit fa fa-exclamation"></i></div>
+  </div>
+  <input *ngIf="backVisible" type="button" value="Back" class="button submit-button tooltip-transparent"
+         (click)="back()"/>
 </div>
 

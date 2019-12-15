@@ -10,18 +10,24 @@ import {SearchCriteria} from '../../model/SearchCriteria';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
+  @Input()
   posts: Post[];
-  searchCriteria: SearchCriteria = new SearchCriteria();
+  searchCriteria: SearchCriteria = new SearchCriteria(); // todo delete
   @Input()
   user: User;
   @Input()
   perRow = 1;
 
   constructor(private httpService: TestHttpServiceService) {
-    this.searchCriteria.user = this.user;
-    this.searchCriteria.dataPerPage = 10;
-    this.searchCriteria.author = this.user;
-    this.posts = this.httpService.getPosts(this.searchCriteria);
+    // this.searchCriteria.user = this.user;
+    // this.searchCriteria.dataPerPage = 10;
+    //  this.searchCriteria.author = this.user.username;
+    if (!this.posts) {
+      this.posts = this.httpService.getPosts(this.searchCriteria);
+    }
+    if (this.searchCriteria.tags && this.searchCriteria.tags[0]) {
+
+    }
   }
 
   ngOnInit() {

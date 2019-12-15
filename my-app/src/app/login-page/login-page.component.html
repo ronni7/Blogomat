@@ -16,7 +16,7 @@
   <app-form-error [controlName]="'password'" [control]="formGroup.get('password')"></app-form-error>
 
   <input [disabled]="!isValid()" type="submit" value="Sign In!" id="submit"
-         class="submit-button button  tooltip-transparent"/>
+         class="submit-button button  tooltip-transparent" routerLink="/"/>
   <div>
     <h2 class="white-text">Don't have an account?</h2>
   </div>
@@ -24,7 +24,7 @@
   <div>
     <div class="in-form-background">
       <button id="register-button" class="button tooltip-transparent medium-size-text"
-              routerLink="../register">Sign Up!
+              routerLink="/register">Sign Up!
       </button>
     </div>
   </div>

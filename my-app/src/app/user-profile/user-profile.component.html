@@ -1,19 +1,19 @@
-<div class="match-parent" *ngIf="visible" (click)="showMenu()">
+<div class="match-parent" *ngIf="visible" (mouseover)="showMenu()">
   <img id="userImg" src="assets/icons/user-icon-large.png" class="match-parent"/>
   <div class="content-centered">
-    <ul (focusout)="showMenu()" [hidden]="menuHidden" class="user-menu menu span" id="user-menu">
-      <li class="tooltip-transparent menu-element">
-        <a class="menu-item-link" routerLink="/account">My Profile</a>
+    <ul (mouseover)="showMenu()" [hidden]="menuHidden" class="user-menu menu span" id="user-menu">
+      <li (click)="showMenu()" class="tooltip-transparent menu-item" routerLink="/account">
+        <a class="menu-item-link">My profile</a>
       </li>
-      <li class="tooltip-transparent menu-element">
-        <a class="menu-item-link" routerLink="/usersettings">Settings</a>
+      <li (click)="showMenu()" class="tooltip-transparent menu-item" routerLink="/userSettings">
+        <a class="menu-item-link">Profile settings</a>
       </li>
-      <li class="tooltip-transparent menu-element">
-        <a class="menu-item-link" routerLink="/management">Blog management</a>
+      <li (click)="showMenu()" class="tooltip-transparent menu-item" routerLink="/management">
+        <a class="menu-item-link">Blog management</a>
       </li>
-      <li class="menu-element click-disabled">───────</li>
-      <li class="tooltip-transparent menu-element">
-        <a class="menu-item-link" routerLink="/main">Logout</a>
+      <li class="menu-item click-disabled">───────</li>
+      <li (click)="showMenu()" class="tooltip-transparent menu-item" routerLink="/">
+        <a class="menu-item-link">Logout</a>
       </li>
     </ul>
   </div>

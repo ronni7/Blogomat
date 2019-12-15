@@ -13,7 +13,7 @@ import {ProfileComponent} from './profile/profile.component';
 
 
 const routes: Routes = [
-  {path: 'main', component: MainPageComponent},
+  {path: '', component: MainPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'about', component: AboutComponent},
   {path: 'test', component: AppComponent},

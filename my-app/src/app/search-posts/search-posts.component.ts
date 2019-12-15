@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Post} from "../../model/Post";
 
 @Component({
   selector: 'app-search-posts',
@@ -8,11 +9,16 @@ import {Component, Input, OnInit} from '@angular/core';
 export class SearchPostsComponent implements OnInit {
   @Input()
   authorLocked: boolean;
+  private posts: Post[];
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  refreshPosts($event: Post[]) {
+    this.posts = $event;
   }
 
 }

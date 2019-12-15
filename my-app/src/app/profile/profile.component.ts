@@ -28,15 +28,15 @@ export class ProfileComponent implements OnInit {
     this.chart = new Chart(this.canvas.nativeElement, {
       type: 'line',
       data: {
-        labels: ['label1', 'label2', 'label3', 'label4', 'label5', 'label6'],
+        labels: ['July', 'August', 'September', 'October', 'November', 'December'],
         datasets: [
           {
-            label: 'Monthly Revenues For The Year',
+            label: 'Likes per month',
             data: [2, 3, 5, 7, 8, 6, 7, 9, 4, 3, 0, 8],
             fill: false,
-            lineTension: 0.2,
-            borderColor: 'red',
-            borderWidth: 1,
+            lineTension: 0.3,
+            borderColor: 'green',
+            borderWidth: 2,
           }
         ],
       },
@@ -59,7 +59,6 @@ export class ProfileComponent implements OnInit {
   }
 
   saveChanges() {
-    console.log(this.user);
-   // this.httpService.saveUserDetails(this.user);
+   this.httpService.saveUserDetails(this.user);
   }
 }

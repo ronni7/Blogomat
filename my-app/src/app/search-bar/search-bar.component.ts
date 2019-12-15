@@ -1,20 +1,26 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {TestHttpServiceService} from '../test-http-service.service';
-import {Post} from '../../model/Post';
 import {SearchCriteria} from '../../model/SearchCriteria';
+import {Post} from "../../model/Post";
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent implements OnInit{
   dropped = false;
   @Input()
   authorLocked: boolean;
+  @Input()
+  currentPage: number = 1;
+  @Input()
+  searchTag: string;
   formGroup: FormGroup;
+
+  @Output() postsSearchedEvent = new EventEmitter<Post[]>();
 
   constructor(private router: Router, private formBuilder: FormBuilder, private httpService: TestHttpServiceService) {
     this.formGroup = this.formBuilder.group(
@@ -26,10 +32,19 @@ export class SearchBarComponent implements OnInit {
         publishDateTo: [''],
         dataPerPage: ['', [Validators.min(10), Validators.max(100)]]
       });
+
   }
 
   ngOnInit() {
+    console.log(this.searchTag, 'jest czy nie ma');
+    if (this.searchTag) {
+      console.log('powinno dzialać');
+      this.dropped = true;
+      this.formGroup.controls['tags'].setValue(this.searchTag);
+      this.getFormData();
+    }
   }
+
 
   dropdownStateChange() {
     this.dropped = !this.dropped;
@@ -50,11 +65,12 @@ export class SearchBarComponent implements OnInit {
         tags.push(item.toString().replace(/ /g, ''));
       }
       data.tags = tags;
-  //    console.log(tags, 'temp');
-      console.log('searchCriteria', data);
-    //  return data as SearchCriteria;
-      return this.httpService.getPosts(data as SearchCriteria);
+      data.page = this.currentPage;
+      console.log('searchCriteria tej', data);
+      //  return data as SearchCriteria;
+      this.postsSearchedEvent.emit(this.httpService.getPosts(data as SearchCriteria));
     }
   }
+
 
 }

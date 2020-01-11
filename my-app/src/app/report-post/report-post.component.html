@@ -1,0 +1,30 @@
+<form (click)="dispatch($event)" [formGroup]="formGroup" (ngSubmit)="sendMessage()"
+      class="form modal-dialog content-centered cursor-disable">
+  <h2 class="title content-centered">Report this post:</h2>
+  <div class="form-field stretch">
+    <label id="subjectLabel" for="subject" class="form-label">Select subject:</label>
+
+    <select [ngModel]="selectedOption" (ngModelChange)="onChange($event)" formControlName="subject" id="subject"
+            class="stretch form-control combo-box">
+      <option class="combo-box-item" [value]="1">Opcja1</option>
+      <option class="combo-box-item" [value]="2">Opcja2</option>
+      <option class="combo-box-item" [value]="3">Opcja3</option>
+      <option class="combo-box-item" [value]="4">Opcja4</option>
+      <option class="combo-box-item" [value]="5">Opcja5</option>
+    </select>
+
+  </div>
+  <div *ngIf="show()" class="form-field">
+    <label id="subjectCustomLabel" for="subjectCustom" class="form-label">Subject:</label>
+    <input formControlName="customSubject" id="subjectCustom" type="text" [required]="show()"
+           class="form-control"/>
+  </div>
+  <div class="form-field">
+    <label id="messageLabel" for="message" class="form-label">Report reason:</label>
+    <textarea formControlName="message" id="message" maxlength="1024" class="form-control"></textarea>
+  </div>
+  <input [disabled]="!isValid()" type="submit" value="Report this post" id="submit"
+         class="submit-button button  tooltip-transparent"/>
+  <input id="cancel" type="button" class="submit-button button  tooltip-transparent" value="Cancel"
+         (click)="close(null,$event)"/>
+</form>

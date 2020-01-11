@@ -4,35 +4,82 @@
   </div>
 
   <div id="date" class="white-text">
-    Dodany: {{data.publishDate | date:'yyyy-MM-dd'}}
-    przez: {{data.author}}
+    Posted: {{data.publishDate | date:'yyyy-MM-dd'}}
+    by: {{data.author}}
   </div>
 
-  <div id="backgroundImage" class="post-section">
+  <div [hidden]="expanded" id="postContent" class="post-section div-centered post-textarea">
+    {{data.postContent.substring(0, 255)}}
+  </div>
+  <input type="button" value="expand" [hidden]="expanded" id="more" (click)="expand()"
+         class="button submit-button tooltip-transparent align-center"
+  />
+  <div [hidden]="!expanded" id="postContent2" class="post-section div-centered post-textarea">
+    {{ data.postContent}}
+  </div>
 
-  </div>
-  <div id="postContent" class="post-section div-centered post-textarea">
-    {{data.postContent}}
-  </div>
+
   <div id="tags" class="post-section">
     <div class="horizontal-group post-toolbar">
-      <div class="span">Tagi:</div>
-      <li class="tag" (click)="searchCurrentTag(tag)" *ngFor="let tag of data.tags">{{tag}}  </li>
+      <div class="span">Tags:</div>
+      <li class="tag" (click)="searchCurrentTag(tag)" *ngFor="let tag of data.tags">{{tag}}</li>
     </div>
   </div>
+  <div class="horizontal-span stretch"></div>
   <div id="postToolbar" class="horizontal-group post-toolbar justify-content toolbar-item-centered">
-    <div class="horizontal-item horizontal toolbar-item-centered">
-      <i (click)="likePost(1)" id="likeIt" class="icon-fit fa fa-thumbs-o-up"></i>
-      <div>{{getLikes(data.title)}}</div><!-- todo post id-->
+    <div class="vertical-align-center">
+      <i (click)="likePost()" id="likeIt" class="horizontal-item fa fa-thumbs-o-up"></i>
+      <div class="horizontal-item">{{likes}}</div>
     </div>
-    <div class="horizontal-span"></div>
-    <div class="horizontal-item toolbar-item-centered">
+
+     <!-- <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"
+           data-layout="button" data-size="large">
+        <a target="_blank"
+           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+           class="fb-xfbml-parse-ignore">Udostępnij</a>
+    </div>-->
+    <div class="vertical-span"></div>
+    <div class="vertical-align-center">
       <app-social-media></app-social-media>
     </div>
-    <div class="horizontal-span vertical"></div>
-    <div class="horizontal-item toolbar-item-centered menu-item " routerLink="/account"><i id="user" class="icon-fit fa fa-user"></i></div>
-    <div class="horizontal-span"></div>
-    <div class="horizontal-item toolbar-item-centered menu-item" routerLink="/about"><i id="report" class="icon-fit fa fa-exclamation"></i></div>
+    <div class="vertical-span vertical"></div>
+    <div class="vertical-align-center menu-item" (click)="navigateToAuthorProfile()">
+      <i id="user" class="horizontal-item fa fa-user"></i>
+    </div>
+    <div class="vertical-span"></div>
+    <div class="vertical-align-center menu-item" *ngIf="!alreadyReported" (click)="toggleReport($event)">
+      <i id="report" class="horizontal-item fa fa-exclamation"></i>
+      <app-report-post (closeEvent)="toggleReport($event)" *ngIf="reportVisible"
+                       [postID]="this.data.id"></app-report-post>
+    </div>
+    <div class="vertical-align-center menu-item" *ngIf="alreadyReported">
+      <i id="reported" class="horizontal-item fa fa-exclamation"></i>
+    </div>
+  </div>
+  <div class="horizontal-span stretch"></div>
+  <div>
+    <div class="vertical-align-center">
+      <div class="horizontal-item">Comments({{commentCount}})</div>
+      <div class="horizontal-item">
+        <i *ngIf="commentCount > 0 && !commentsDropped"
+           class=" fa fa-caret-square-o-down" (click)="dropComments()"></i>
+        <i *ngIf="commentCount > 0 && commentsDropped"
+           class=" fa fa-caret-square-o-up" (click)="dropComments()"></i>
+      </div>
+      <div id="addComment" class="horizontal-item" (click)="toggleAddComment()"><i class="fa fa-plus-circle"></i></div>
+    </div>
+    <div [hidden]="!addCommentVisible">
+      <div class="form-field">
+        <textarea id="comment" [(ngModel)]="commentContent" class="form-control" [maxLength]="256"></textarea>
+        <div class="vertical medium-size-text">
+          <i id="check" class="fa fa-check-circle-o" (click)="addComment()"></i>
+          <i id="times" class="fa fa-times-circle-o" (click)="toggleAddComment()"></i>
+        </div>
+        <app-modal-info (closeEvent)="toggleCommentFailed()" [hidden]="!addingCommentFailed"
+                        [message]="'Comment cannot be empty or too long'"></app-modal-info>
+      </div>
+    </div>
+    <app-comment-section *ngIf="commentsDropped" [comments]="comments"></app-comment-section>
   </div>
   <input *ngIf="backVisible" type="button" value="Back" class="button submit-button tooltip-transparent"
          (click)="back()"/>

@@ -26,20 +26,20 @@ export class MainPageComponent implements OnInit {
         console.log('czy to działa, czy jest tag >', this.preselectedTag);
       }
     }
-    this.user = new User();
+/*    this.user = new User();
     this.user.id = -1;
     this.user.username = 'User1';
     this.user.sex = true;
-    this.user.email = 'email@gmail.com';
+    this.user.email = 'email@gmail.com';*/
   }
 
 
   ngOnInit() {
-    //todo delete
-    this.httpService.getUsers().subscribe(response => { //todo delete
-      this.users = response; //todo delete
-      console.log(this.users); //todo delete
-    });
+    /*  //todo delete
+      this.httpService.getUsers().subscribe(response => { //todo delete
+        this.users = response; //todo delete
+        console.log(this.users); //todo delete
+      });*/
   }
 
   refreshPosts($event: Post[]) {

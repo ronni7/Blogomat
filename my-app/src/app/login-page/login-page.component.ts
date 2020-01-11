@@ -37,10 +37,9 @@ export class LoginPageComponent implements OnInit {
     }
     this.submittedCorrectly = true;
     console.log(this.formGroup.value);
-
-    this.httpService.logIn(this.formGroup.value.login, this.formGroup.value.password);
-
-
+    this.httpService.logIn(this.formGroup.value.login, this.formGroup.value.password).subscribe(response => {
+      console.log('Authenticated', response);
+    });
   }
 
 }

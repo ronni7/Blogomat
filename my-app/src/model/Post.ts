@@ -1,13 +1,22 @@
 export class Post {
-
+  private _id: number;
   private _title: string;
-  private _tags: Array<any>;
+  private _tags: Array<string>;
   private _backgroundImage?: File;
   private _postContent: string;
   private _publishDate: Date;
   private _author: string;
 
-  constructor(title: string, tags: Array<any>, backgroundImage: File, postContent: string, publishDate: Date, author: string) {
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
+
+  constructor(id: number, title: string, tags: Array<string>, backgroundImage: File, postContent: string, publishDate: Date, author: string) {
+    this._id = id;
     this._title = title;
     this._tags = tags;
     this._backgroundImage = backgroundImage;
@@ -32,11 +41,11 @@ export class Post {
     this._backgroundImage = value;
   }
 
-  get tags(): Array<any> {
+  get tags(): Array<string> {
     return this._tags;
   }
 
-  set tags(value: Array<any>) {
+  set tags(value: Array<string>) {
     this._tags = value;
   }
 

@@ -6,7 +6,8 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./test.component.scss']
 })
 export class TestComponent implements OnInit {
-  @Input()  text;
+  @Input() text;
+  private responsive: boolean;
 
   constructor() {
     this.text = 'sample-text';
@@ -15,4 +16,13 @@ export class TestComponent implements OnInit {
   ngOnInit() {
   }
 
+  myFunction() {
+    this.responsive = !this.responsive;
+    const x = document.getElementById('navBar');
+    if (x.className === 'top-panel') {
+      x.className += ' responsive';
+    } else {
+      x.className = 'top-panel';
+    }
+  }
 }

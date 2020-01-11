@@ -1,4 +1,4 @@
-<form [formGroup]="formGroup" class="form" (ngSubmit)="getFormData()">
+<form [formGroup]="formGroup" class="form" (ngSubmit)="publish()">
   <h1 class="title white-text">Add post</h1>
   <div class="form-field">
     <label id="titleLabel" class="form-label" for="title">Title:</label>
@@ -20,7 +20,7 @@
     <textarea formControlName="postContent" class="form-control" id="postContent"
               placeholder="Add your content here"></textarea>
   </div>
-  <input type="submit" value="Preview" id="preview" [disabled]="!isFormValid()"
+  <input type="button" value="Preview" id="preview" [disabled]="!isFormValid()"
          class="submit-button button tooltip-transparent" (click)="routeToPreview()"/>
 
   <input type="submit" value="Publish" id="submit" [disabled]="!isFormValid()"

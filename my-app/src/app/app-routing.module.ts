@@ -9,6 +9,8 @@ import {ManagementComponent} from './management/management.component';
 import {PostPreviewComponent} from './post-preview/post-preview.component';
 import {PostsComponent} from './posts/posts.component';
 import {ProfileComponent} from './profile/profile.component';
+import {SettingsComponent} from './settings/settings.component';
+import {ReportListComponent} from "./report-list/report-list.component";
 
 
 
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path: 'management', component: ManagementComponent},
   {path: 'preview', component: PostPreviewComponent},
   {path: 'posts', component: PostsComponent},
-  {path: 'account', component: ProfileComponent}
+  {path: 'settings', component: SettingsComponent},
+  {path: 'account', component: ProfileComponent},
+  {path: 'reports', component: ReportListComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,8 @@
+<div class="form-style-background white-text">
+  <h1 class="title">Report list</h1>
+  <div class="post align-center div-centered-top-margin">
+    <app-report-preview  (actionEvent)="handleEvent($event)" [report]="report" *ngFor="let report of reportList">
+    </app-report-preview>
+  </div>
+  <app-modal-info (closeEvent)="handleEvent($event)" [hidden]="!reportVisible" [message]="getMessage()"></app-modal-info>
+</div>

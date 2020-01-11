@@ -20,6 +20,33 @@ body {
   grid-template-columns: 100% auto;
 }
 
+.top-panel .icon {
+  display: none;
+}
+@media screen and (max-width: 1200px) {
+  .top-panel a:not(:first-child) {display: none;}
+  .top-panel a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .top-panel.responsive {
+    position: relative;
+    flex-direction: column;
+  }
+  .top-panel.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .top-panel.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
 .panel-background {
   background: linear-gradient(to bottom, rgb(192, 17, 255) 0%,
     rgba(255, 255, 255, 0) 100%) top,
@@ -180,7 +207,7 @@ body {
 .form-error {
   border: red;
   border-radius: 4px;
-  width: 100%;
+  z-index: 2;
 }
 
 .error-text {
@@ -305,7 +332,7 @@ body {
   margin: 0.2em 0.2em 0.2em 0.2em;
 }
 
-.horizontal-span {
+.vertical-span {
   border: 2px solid white;
   min-height: 1em;
 }
@@ -395,6 +422,7 @@ body {
   padding: 5px;
   margin: 0.5em;
   color: white;
+  text-align: center;
 }
 
 .block-standalone {
@@ -439,3 +467,145 @@ input > disabled {
   text-decoration: none;
 }
 
+.horizontal-span {
+  border: 2px solid white;
+}
+
+.vertical-align-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-navigation-menu {
+  font-size: 24px;
+}
+
+.modal-info {
+  display: inline-block;
+  position: fixed;
+  min-height: 20vh;
+  left: 37.5%;
+  right: 37.5%;
+  bottom: 30vh;
+  z-index: 9;
+  min-width: 25%;
+  max-width: 25%;
+  width: 25%;
+  border: 0.4em solid #c011ff;
+  overflow: auto;
+}
+
+.modal-dialog {
+  display: block;
+  position: fixed;
+  min-height: 50vh;
+  left: 12.5%;
+  right: 12.5%;
+  top: 15vh;
+  bottom: 15vh;
+  z-index: 9;
+  min-width: 75%;
+  max-width: 75%;
+  width: 75%;
+  border: 0.4em solid #c011ff;
+  overflow: auto;
+}
+
+/*::-webkit-scrollbar {
+  background-color: #49cbe5;
+  min-width: 0.5em;
+}
+::-moz-viewport-scroll{
+  background-color: #49cbe5;
+  min-width: 0.5em;
+}
+.scroller {
+  overflow-y: scroll;
+  scrollbar-color: #0A4C95 #C2D2E4;
+}*/
+
+.select-selected:after {
+}
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.combo-box select {
+  display: none; /*hide original SELECT element: */
+}
+
+.combo-box-selected {
+  background-color: red;
+}
+
+/* Style the arrow inside the select element: */
+.combo-box-selected {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.combo-box-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div, .select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.combo-box-item {
+  position: absolute;
+  background-color: lightblue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.combo-box-item-selected {
+  background-color: yellow;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.cursor-disable {
+  cursor: auto;
+}
+
+.post-border {
+  border: 4px solid #c011ff;
+  margin: 0 auto;
+}
+
+.comment {
+  border: 1px solid #c011ff;
+}
+
+.icon-inside-control {
+  display: inline-block;
+  position: absolute;
+  margin-left: 65vw;
+}

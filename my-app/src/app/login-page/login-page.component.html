@@ -1,22 +1,27 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form form-big div-centered-top-margin">
-<h1 id="title" class="title content-centered">Sign in</h1>
+  <h1 id="title" class="title content-centered">Sign in</h1>
   <div class="form-field">
     <label class="form-label" id="loginLabel" for="login">Login:</label>
-    <input formControlName="login" class="form-control"
-           id="login" placeholder="Enter your login"/>
 
+    <input formControlName="login" class="form-control"
+           id="login" placeholder="Enter your login" required="true"/>
+    <span class="fa fa-exclamation error-text icon-inside-control">
+    <app-form-error [control]="formGroup.get('login')"></app-form-error>
+</span>
   </div>
-  <app-form-error [control]="formGroup.get('login')"></app-form-error>
+
   <div class="form-field">
     <label class="form-label" id="passwordLabel" for="password">Password:</label>
     <input formControlName="password" class="form-control" type="password" id="password"
-           placeholder="********"/>
-
+           placeholder="********" required="true"/>
+    <span class="fa fa-exclamation error-text icon-inside-control">
+        <app-form-error [controlName]="'password'" [control]="formGroup.get('password')"></app-form-error>
+    </span>
   </div>
-  <app-form-error [controlName]="'password'" [control]="formGroup.get('password')"></app-form-error>
+
 
   <input [disabled]="!isValid()" type="submit" value="Sign In!" id="submit"
-         class="submit-button button  tooltip-transparent" routerLink="/"/>
+         class="submit-button button  tooltip-transparent" />
   <div>
     <h2 class="white-text">Don't have an account?</h2>
   </div>

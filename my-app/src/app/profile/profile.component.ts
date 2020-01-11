@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UserDetails} from '../../model/UserDetails';
 import {TestHttpServiceService} from '../test-http-service.service';
 import {Chart} from 'chart.js';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -13,11 +14,18 @@ export class ProfileComponent implements OnInit {
   user: UserDetails;
   chart: Chart;
   @ViewChild('canvas', {static: true}) canvas: ElementRef;
+  private edit: boolean = true;
 
-  constructor(private httpService: TestHttpServiceService) {
+  constructor(private httpService: TestHttpServiceService, private router: Router) {
     this.user = httpService.getUserDetails(1);
- /*   if (!this.user.image)
-      this.user.image = new Image(100, 100);*/
+    if (this.router.getCurrentNavigation()) {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.edit = this.router.getCurrentNavigation().extras.state.edit as boolean;
+        //this.edit = this.router.getCurrentNavigation().extras.state.edit as string/number/user ===this.user.ID/username;
+      }
+    }
+    /*   if (!this.user.image)
+         this.user.image = new Image(100, 100);*/
   }
 
   ngOnInit() {
@@ -42,7 +50,7 @@ export class ProfileComponent implements OnInit {
       },
       options: {
         title: {
-          text: 'Monthly Revenue',
+          text: 'Statistics',
           display: true
         },
         scales: {
@@ -59,6 +67,6 @@ export class ProfileComponent implements OnInit {
   }
 
   saveChanges() {
-   this.httpService.saveUserDetails(this.user);
+    this.httpService.saveUserDetails(this.user);
   }
 }

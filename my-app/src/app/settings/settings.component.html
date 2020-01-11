@@ -1,0 +1,96 @@
+<div class="form-style-background white-text">
+  <h1 class="content-centered">Choose what informations do you want to be viisible to other people</h1>
+  <div id="section1">
+
+    <div class="horizontal stretch">
+      <div class="theme-panel stretch">
+        <h2 class="content-centered">Theme</h2>
+        <div class="horizontal">
+          <div class="vertical align-center">
+            <div class="horizontal white-text">
+              <div>Dark</div>
+              <i class="fa fa-square"></i>
+            </div>
+            <div class="horizontal white-text">
+              <div>Retro</div>
+              <i class="fa fa-square"></i>
+            </div>
+            <div class="horizontal white-text">
+              <div>Summer</div>
+              <i class="fa fa-square"></i>
+            </div>
+            <div class="horizontal white-text">
+              <div>Elegant</div>
+              <i class="fa fa-square"></i>
+            </div>
+          </div>
+          <app-post-preview [data]="mockedPost"></app-post-preview>
+        </div>
+        <!--  <select [ngModel]="selectedTheme" (ngModelChange)="onChange($event)" id="subject"
+                  class="stretch form-control combo-box">
+            <option class="combo-box-item" [value]="'Dark'"><i id="red" class="fa fa-square"></i></option>
+            <option class="combo-box-item" [value]="'<i fa fa-square>'">Opcja2</option>
+            <option class="combo-box-item" [value]="'Summer'">Opcja3</option>
+            <option class="combo-box-item" [value]="'Elegant'">Opcja4</option>
+          </select>-->
+        <div>
+
+        </div>
+      </div>
+      <div class="personal-data-panel">
+        <h2 class="content-centered">Personal data</h2>
+        <div class="form-field">
+          <label class="form-label" id="usernameLabel" for="username">Username:</label>
+          <input id="username" class="form-control" type="checkbox" maxlength="32"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label" id="nameLabel" for="name">Name:</label>
+          <input id="name" class="form-control" type="checkbox" maxlength="32"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label" id="surnameLabel" for="surname">Surname:</label>
+          <input id="surname" class="form-control" type="checkbox" maxlength="32"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label" id="emailLabel" for="email">Email:</label>
+          <input id="email" class="form-control" type="checkbox" maxlength="32"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label" id="registeredLabel" for="registered">Registered:</label>
+          <input id="registered" class="form-control" type="checkbox" maxlength="32"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label" id="postsCountLabel" for="postsCount">Posted:</label>
+          <input id="postsCount" class="form-control" type="checkbox" maxlength="32"/>
+        </div>
+      </div>
+
+      <div id="section2">
+        <h2 class="content-centered">Social media</h2>
+        <div class="form-field">
+          <label class="form-label" id="facebookLabel" for="facebook"><i
+            class="icon-fit fa fa-facebook-square"></i></label>
+          <input id="facebook" class="form-control" type="checkbox" maxlength="32"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label" id="instagramLabel" for="instagram"><i class="icon-fit fa fa-instagram"></i></label>
+          <input id="instagram" class="form-control" type="checkbox" maxlength="32"/>
+        </div>
+        <div class="form-field align-center">
+          <label class="form-label " id="snapchatLabel" for="snapchat"><i
+            class="icon-fit fa fa-snapchat-square"></i></label>
+          <input id="snapchat" class="form-control" type="checkbox" maxlength="32"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label" id="twitterLabel" for="twitter"><i
+            class="icon-fit fa fa-twitter-square"></i></label>
+          <input id="twitter" class="form-control" type="checkbox" maxlength="32"/>
+        </div>
+      </div>
+    </div>
+    <div class="content-centered">
+      <input type="submit" value="Save changes" id="submit" class="submit-button button tooltip-transparent"/>
+    </div>
+  </div>
+
+</div>

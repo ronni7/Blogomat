@@ -1,0 +1,4 @@
+<div *ngFor="let comment of comments" class="form-style-background vertical comment">
+  <div>{{comment.posted | date:'yyyy-MM-dd'}} {{ comment.author}}</div>
+  <div>{{comment.content}}</div>
+</div>

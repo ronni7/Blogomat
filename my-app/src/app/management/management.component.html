@@ -1,29 +1,22 @@
-<div class="horizontal div-centered-top-margin">
-  <div class="left-panel">
-    <ul class="menu menu-on-page white-text">
-      <li (click)="switchAction(1);" class="menu-item white-text tooltip-transparent">
-        Add post
-      </li>
-      <li (click)="switchAction(2);" class="menu-item white-text tooltip-transparent">
-        My Posts
-      </li>
-      <li (click)="switchAction(3);" class="menu-item white-text tooltip-transparent">
-        Find Post
-      </li>
-    </ul>
+<div class="horizontal white-text sub-navigation-menu">
+  <ul class="navigation on-page-navigation form-style-background white-text">
+    <li (click)="switchAction(1);" class="tooltip-transparent menu-item stretch"> Add post</li>
+    <div class="vertical-span"></div>
+    <li (click)="switchAction(2);" class="tooltip-transparent menu-item stretch"> My posts</li>
+    <div class="vertical-span"></div>
+    <li (click)="switchAction(3);" class="tooltip-transparent menu-item stretch"> Find post</li>
+  </ul>
+</div>
+
+<div *ngIf="action===1" class="div-centered-top-margin">
+  <app-add-post [data]="retrievedData"></app-add-post>
+</div>
+<div *ngIf="action===2" class="div-centered-top-margin">
+  <div class="form-style-background">
+    <h1 class="title">My posts</h1>
+    <app-posts [perRow]="1"></app-posts><!-- [user]="this.user" user from cookie or sth-->
   </div>
-  <div class="span"></div>
-  <div class="right-panel">
-    <div *ngIf="action===1">
-      <app-add-post [data]="retrievedData"></app-add-post>
-    </div>
-    <div *ngIf="action===2">
-      <div class="form-style-background">
-        <app-posts [perRow]="1"></app-posts><!-- [user]="this.user" user from cookie or sth-->
-      </div>
-    </div>
-    <div *ngIf="action===3">
-      <app-search-posts [authorLocked]="true"></app-search-posts>
-    </div>
-  </div>
+</div>
+<div *ngIf="action===3" class="div-centered-top-margin">
+  <app-search-posts [authorLocked]="true"></app-search-posts>
 </div>

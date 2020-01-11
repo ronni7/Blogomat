@@ -34,7 +34,9 @@ export class RegisterPageComponent implements OnInit {
 
   onSubmit() {
     if (this.isValid()) {
-      this.httpService.register(this.formGroup.value as User);
+      this.httpService.register(this.formGroup.value as User).subscribe(response => {
+        console.log('Registered', response);
+      });
     }
   }
 }

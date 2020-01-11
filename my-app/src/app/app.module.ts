@@ -24,6 +24,12 @@ import {DatePickerComponent} from './date-picker/date-picker.component';
 import {ProfileComponent} from './profile/profile.component';
 import {DatePipe} from '@angular/common';
 import { SocialMediaComponent } from './social-media/social-media.component';
+import { CommentSectionComponent } from './comment-section/comment-section.component';
+import { ReportPostComponent } from './report-post/report-post.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ReportListComponent } from './report-list/report-list.component';
+import { ReportPreviewComponent } from './report-preview/report-preview.component';
+import { ModalInfoComponent } from './modal-info/modal-info.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +50,13 @@ import { SocialMediaComponent } from './social-media/social-media.component';
     SearchBarComponent,
     DatePickerComponent,
     ProfileComponent,
-    SocialMediaComponent
+    SocialMediaComponent,
+    CommentSectionComponent,
+    ReportPostComponent,
+    SettingsComponent,
+    ReportListComponent,
+    ReportPreviewComponent,
+    ModalInfoComponent
   ],
   imports: [
     BrowserModule,

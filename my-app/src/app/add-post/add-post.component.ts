@@ -45,7 +45,9 @@ export class AddPostComponent implements OnInit {
       const tagsString = this.formGroup.value.tags.toString().trim();
       data.tags = tagsString.split(',');
       data.publishDate = new Date();
+      data.author = 'UserTest';
       return data as Post;
+
     }
   }
 
@@ -55,4 +57,11 @@ export class AddPostComponent implements OnInit {
     });
   }
 
+  publish() {
+    this.httpService.addPost(this.getFormData()).subscribe(response => {
+      if (response) {
+        console.log(response);
+      }
+    });
+  }
 }

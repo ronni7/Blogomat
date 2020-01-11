@@ -1,0 +1,19 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 1.5em;
+  padding: 5px 0;
+  z-index: 1;
+  opacity: 75%;
+  top: -5px;
+  left: 105%;
+}

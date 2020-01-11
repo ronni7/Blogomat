@@ -3,19 +3,19 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {TestHttpServiceService} from '../test-http-service.service';
 import {SearchCriteria} from '../../model/SearchCriteria';
-import {Post} from "../../model/Post";
+import {Post} from '../../model/Post';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent implements OnInit{
+export class SearchBarComponent implements OnInit {
   dropped = false;
   @Input()
   authorLocked: boolean;
   @Input()
-  currentPage: number = 1;
+  currentPage = 1;
   @Input()
   searchTag: string;
   formGroup: FormGroup;
@@ -38,9 +38,9 @@ export class SearchBarComponent implements OnInit{
   ngOnInit() {
     console.log(this.searchTag, 'jest czy nie ma');
     if (this.searchTag) {
-      console.log('powinno dzialać');
+      //    console.log('powinno dzialać');
       this.dropped = true;
-      this.formGroup.controls['tags'].setValue(this.searchTag);
+      this.formGroup.controls.tags.setValue(this.searchTag);
       this.getFormData();
     }
   }
@@ -66,9 +66,11 @@ export class SearchBarComponent implements OnInit{
       }
       data.tags = tags;
       data.page = this.currentPage;
-      console.log('searchCriteria tej', data);
+      //  console.log('searchCriteria tej', data);
       //  return data as SearchCriteria;
       this.postsSearchedEvent.emit(this.httpService.getPosts(data as SearchCriteria));
+     // this.httpService.getPostsSortedWithCriteria('publishDate', 'DESC', data as SearchCriteria);
+     // this.postsSearchedEvent.emit();
     }
   }
 

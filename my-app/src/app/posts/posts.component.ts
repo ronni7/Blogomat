@@ -10,6 +10,11 @@ import {SearchCriteria} from '../../model/SearchCriteria';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
+
+  @Input()
+  sortBy: string = 'publishDate';
+  @Input()
+  order: 'ASC' | 'DESC' = 'DESC';
   @Input()
   posts: Post[];
   searchCriteria: SearchCriteria = new SearchCriteria(); // todo delete
@@ -22,15 +27,36 @@ export class PostsComponent implements OnInit {
     // this.searchCriteria.user = this.user;
     // this.searchCriteria.dataPerPage = 10;
     //  this.searchCriteria.author = this.user.username;
-    if (!this.posts) {
-      this.posts = this.httpService.getPosts(this.searchCriteria);
-    }
-    if (this.searchCriteria.tags && this.searchCriteria.tags[0]) {
 
-    }
   }
 
   ngOnInit() {
+    if (!this.posts) {
+      console.log('sortByu', this.sortBy);
+      // this.posts = this.httpService.getPosts(this.searchCriteria); //todo
+      if (this.sortBy && this.sortBy === 'likes') {
+        console.log('udalo sie');
+        this.httpService.getPostsSortedByLikes().subscribe(response => {
+            if (response) {
+              this.posts = response as Post[];
+            }
+          },
+          error => {
+            console.log('error:', error);
+          }
+        );
+      } else {
+        this.httpService.getPostsSorted(this.sortBy, this.order).subscribe(response => {
+            if (response) {
+              this.posts = response as Post[];
+            }
+          },
+          error => {
+            console.log('error:', error);
+          }
+        );
+      }
+    }
   }
 
 }

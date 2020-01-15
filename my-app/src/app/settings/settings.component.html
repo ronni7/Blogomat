@@ -1,96 +1,127 @@
 <div class="form-style-background white-text">
-  <h1 class="content-centered">Choose what informations do you want to be viisible to other people</h1>
-  <div id="section1">
-
+  <h1 class="title">Settings</h1>
+  <h2 class="content-centered">Choose which informations do you want to be public in your profile</h2>
+  <div id="section1 horizontal stretch">
     <div class="horizontal stretch">
-      <div class="theme-panel stretch">
+      <div class="stretch form-style-background">
         <h2 class="content-centered">Theme</h2>
-        <div class="horizontal">
-          <div class="vertical align-center">
-            <div class="horizontal white-text">
-              <div>Dark</div>
-              <i class="fa fa-square"></i>
-            </div>
-            <div class="horizontal white-text">
-              <div>Retro</div>
-              <i class="fa fa-square"></i>
-            </div>
-            <div class="horizontal white-text">
-              <div>Summer</div>
-              <i class="fa fa-square"></i>
-            </div>
-            <div class="horizontal white-text">
-              <div>Elegant</div>
-              <i class="fa fa-square"></i>
-            </div>
+        <div class="form-field white-text">
+          <label id="defaultLabel" class="form-label" for="default">Dark</label>
+          <input id="default" class="radio" name="theme" type="radio" [value]="selectedTheme"
+                 [checked]="selectTheme('default')"
+                 (change)="tellMe('default')"/>
+          <i id="defaultIcon" class="fa fa-square"></i>
+        </div>
+        <div class="form-field white-text">
+          <label id="lightLabel" class="form-label" for="light">Light</label>
+          <input id="light" class="radio" name="theme" type="radio" [value]="selectedTheme"
+                 [checked]="selectTheme('light')"
+                 (change)="tellMe('light')"/>
+          <i id="lightIcon" class="fa fa-square"></i>
+        </div>
+        <div class="form-field white-text">
+
+          <label id="sunnyLabel" class="form-label" for="sunny">Sunny</label>
+          <input id="sunny" class="radio" name="theme" type="radio" [value]="selectedTheme"
+                 [checked]="selectTheme('sunny')"
+                 (change)="tellMe('sunny')"/>
+          <i id="sunnyIcon" class="fa fa-square"></i>
+        </div>
+        <div class="form-field white-text">
+          <label id="retroLabel" class="form-label" for="retro">Retro</label>
+          <input id="retro" class="radio" name="theme" type="radio" [value]="selectedTheme"
+                 [checked]="selectTheme('retro')"
+                 (change)="tellMe('retro')"/>
+
+          <i id="retroIcon" class="fa fa-square"></i>
+        </div>
+        <div class="content-centered">
+          <input type="submit" value="Save changes" id="submitTheme" class="submit-button button tooltip-transparent"/>
+        </div>
+      </div>
+      <div id="personal-data-panel" class="horizontal stretch">
+        <div class="stretch form-style-background">
+          <h2 class="content-centered">Personal data</h2>
+          <div class="form-field">
+            <label class="form-label" id="usernameLabel" for="username">Username:</label>
+            <app-slider (changed)="personalDataSettings.username=$event" [state]="personalDataSettings.username"
+                        id="username"></app-slider>
+            <div id="usernameValue" class="form-label">{{personalDataSettings.username ? 'Visible' : 'Hidden'}}</div>
           </div>
-          <app-post-preview [data]="mockedPost"></app-post-preview>
-        </div>
-        <!--  <select [ngModel]="selectedTheme" (ngModelChange)="onChange($event)" id="subject"
-                  class="stretch form-control combo-box">
-            <option class="combo-box-item" [value]="'Dark'"><i id="red" class="fa fa-square"></i></option>
-            <option class="combo-box-item" [value]="'<i fa fa-square>'">Opcja2</option>
-            <option class="combo-box-item" [value]="'Summer'">Opcja3</option>
-            <option class="combo-box-item" [value]="'Elegant'">Opcja4</option>
-          </select>-->
-        <div>
-
-        </div>
-      </div>
-      <div class="personal-data-panel">
-        <h2 class="content-centered">Personal data</h2>
-        <div class="form-field">
-          <label class="form-label" id="usernameLabel" for="username">Username:</label>
-          <input id="username" class="form-control" type="checkbox" maxlength="32"/>
-        </div>
-        <div class="form-field">
-          <label class="form-label" id="nameLabel" for="name">Name:</label>
-          <input id="name" class="form-control" type="checkbox" maxlength="32"/>
-        </div>
-        <div class="form-field">
-          <label class="form-label" id="surnameLabel" for="surname">Surname:</label>
-          <input id="surname" class="form-control" type="checkbox" maxlength="32"/>
-        </div>
-        <div class="form-field">
-          <label class="form-label" id="emailLabel" for="email">Email:</label>
-          <input id="email" class="form-control" type="checkbox" maxlength="32"/>
-        </div>
-        <div class="form-field">
-          <label class="form-label" id="registeredLabel" for="registered">Registered:</label>
-          <input id="registered" class="form-control" type="checkbox" maxlength="32"/>
-        </div>
-        <div class="form-field">
-          <label class="form-label" id="postsCountLabel" for="postsCount">Posted:</label>
-          <input id="postsCount" class="form-control" type="checkbox" maxlength="32"/>
+          <div class="form-field">
+            <label class="form-label" id="nameLabel" for="name">Name:</label>
+            <app-slider (changed)="personalDataSettings.name=$event" [state]="personalDataSettings.name"
+                        id="name"></app-slider>
+            <div id="nameValue" class="form-label">{{personalDataSettings.name ? 'Visible' : 'Hidden'}}</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" id="surnameLabel" for="surname">Surname:</label>
+            <app-slider (changed)="personalDataSettings.surname=$event" [state]="personalDataSettings.surname"
+                        id="surname"></app-slider>
+            <div id="surnameValue" class="form-label">{{personalDataSettings.surname ? 'Visible' : 'Hidden'}}</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" id="emailLabel" for="email">Email:</label>
+            <app-slider (changed)="personalDataSettings.email=$event" [state]="personalDataSettings.email"
+                        id="email"></app-slider>
+            <div id="emailValue" class="form-label">{{personalDataSettings.email ? 'Visible' : 'Hidden'}}</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" id="registeredLabel" for="registered">Registered:</label>
+            <app-slider (changed)="personalDataSettings.registered=$event" [state]="personalDataSettings.registered"
+                        id="registered"></app-slider>
+            <div id="registeredValue"
+                 class="form-label">{{personalDataSettings.registered ? 'Visible' : 'Hidden'}}</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" id="postsCountLabel" for="postsCount">Posted:</label>
+            <app-slider (changed)="personalDataSettings.postsCount=!personalDataSettings.postsCount"
+                        [state]="personalDataSettings.postsCount"
+                        id="postsCount"></app-slider>
+            <div id="postsCountValue"
+                 class="form-label">{{personalDataSettings.postsCount ? 'Visible' : 'Hidden'}}</div>
+          </div>
+          <div class="content-centered">
+            <input type="submit" value="Save changes" id="submit" class="submit-button button tooltip-transparent"/>
+          </div>
         </div>
       </div>
-
-      <div id="section2">
+      <div class="stretch form-style-background">
         <h2 class="content-centered">Social media</h2>
         <div class="form-field">
           <label class="form-label" id="facebookLabel" for="facebook"><i
             class="icon-fit fa fa-facebook-square"></i></label>
-          <input id="facebook" class="form-control" type="checkbox" maxlength="32"/>
+          <app-slider (changed)="socialMedia.facebook=$event" [state]="socialMedia.facebook"
+                      id="facebook"></app-slider>
+          <div id="facebookValue" class="form-label">{{socialMedia.facebook ? 'Visible' : 'Hidden'}}</div>
         </div>
         <div class="form-field">
           <label class="form-label" id="instagramLabel" for="instagram"><i class="icon-fit fa fa-instagram"></i></label>
-          <input id="instagram" class="form-control" type="checkbox" maxlength="32"/>
+          <app-slider (changed)="socialMedia.instagram=$event" [state]="socialMedia.instagram"
+                      id="instagram"></app-slider>
+          <div id="instagramValue" class="form-label">{{socialMedia.instagram ? 'Visible' : 'Hidden'}}</div>
         </div>
-        <div class="form-field align-center">
+        <div class="form-field">
           <label class="form-label " id="snapchatLabel" for="snapchat"><i
             class="icon-fit fa fa-snapchat-square"></i></label>
-          <input id="snapchat" class="form-control" type="checkbox" maxlength="32"/>
+          <app-slider (changed)="socialMedia.snapchat=$event" [state]="socialMedia.snapchat"
+                      id="snapchat"></app-slider>
+          <div id="snapchatValue" class="form-label">{{socialMedia.snapchat ? 'Visible' : 'Hidden'}}</div>
         </div>
         <div class="form-field">
           <label class="form-label" id="twitterLabel" for="twitter"><i
             class="icon-fit fa fa-twitter-square"></i></label>
-          <input id="twitter" class="form-control" type="checkbox" maxlength="32"/>
+          <app-slider (changed)="socialMedia.twitter=$event" [state]="socialMedia.twitter"
+                      id="twitter"></app-slider>
+          <div id="twitterValue" class="form-label">{{socialMedia.twitter ? 'Visible' : 'Hidden'}}</div>
+        </div>
+        <div class="content-centered">
+          <input type="submit" value="Save changes" id="submit" class="submit-button button tooltip-transparent"/>
         </div>
       </div>
     </div>
-    <div class="content-centered">
-      <input type="submit" value="Save changes" id="submit" class="submit-button button tooltip-transparent"/>
-    </div>
   </div>
 
+
 </div>
+

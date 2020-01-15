@@ -2,17 +2,17 @@
   <img id="userImg" src="assets/icons/user-icon-large.png" class="match-parent"/>
   <div class="content-centered">
     <ul (mouseover)="showMenu()" [hidden]="menuHidden" class="user-menu menu span" id="user-menu">
-      <li (click)="showMenu()" class="tooltip-transparent menu-item" routerLink="/account">
+      <li (click)="showMenu()" class="tooltip-transparent menu-item-cursor" routerLink="/account">
         <a class="menu-item-link">My profile</a>
       </li>
-      <li (click)="showMenu()" class="tooltip-transparent menu-item" routerLink="/settings">
+      <li (click)="showMenu()" class="tooltip-transparent menu-item-cursor" routerLink="/settings">
         <a class="menu-item-link">Profile settings</a>
       </li>
-      <li (click)="showMenu()" class="tooltip-transparent menu-item" routerLink="/management">
+      <li (click)="showMenu()" class="tooltip-transparent menu-item-cursor" routerLink="/management">
         <a class="menu-item-link">Blog management</a>
       </li>
-      <li class="menu-item click-disabled">───────</li>
-      <li (click)="showMenu()" class="tooltip-transparent menu-item" routerLink="/">
+      <li class="menu-item-cursor click-disabled">───────</li>
+      <li (click)="showMenu()" class="tooltip-transparent menu-item-cursor" routerLink="/">
         <a class="menu-item-link">Logout</a>
       </li>
     </ul>

@@ -43,16 +43,16 @@
       <app-social-media></app-social-media>
     </div>
     <div class="vertical-span vertical"></div>
-    <div class="vertical-align-center menu-item" (click)="navigateToAuthorProfile()">
+    <div class="vertical-align-center menu-item-cursor" (click)="navigateToAuthorProfile()">
       <i id="user" class="horizontal-item fa fa-user"></i>
     </div>
     <div class="vertical-span"></div>
-    <div class="vertical-align-center menu-item" *ngIf="!alreadyReported" (click)="toggleReport($event)">
+    <div class="vertical-align-center menu-item-cursor" *ngIf="!alreadyReported" (click)="toggleReport($event)">
       <i id="report" class="horizontal-item fa fa-exclamation"></i>
       <app-report-post (closeEvent)="toggleReport($event)" *ngIf="reportVisible"
                        [postID]="this.data.id"></app-report-post>
     </div>
-    <div class="vertical-align-center menu-item" *ngIf="alreadyReported">
+    <div class="vertical-align-center menu-item-cursor" *ngIf="alreadyReported">
       <i id="reported" class="horizontal-item fa fa-exclamation"></i>
     </div>
   </div>

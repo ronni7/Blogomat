@@ -222,7 +222,7 @@ export class TestHttpServiceService {
   }
 
   getComments(postID: number): Observable<any> {
-    return this.http.post('http://localhost:8080/post/getComments', postID);
+    return this.http.post('http://localhost:8080/comment/getComments', postID);
   }
 
   deletePost(postID: number): Observable<any> {
@@ -235,7 +235,7 @@ export class TestHttpServiceService {
   }
 
   addComment(commentContent: Comment): Observable<any> {
-    return this.http.post('http://localhost:8080/post/addComment', commentContent);
+    return this.http.post('http://localhost:8080/comment/addComment', commentContent);
   }
 
   getPostsSortedByLikes(): Observable<any> {

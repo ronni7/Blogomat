@@ -5,10 +5,19 @@ html,
 body {
   display: flex;
   flex: 1;
-  height: 100vh;;
+  height: 100vh;
   min-height: 100vh;
   flex-direction: column;
   justify-content: space-between
+}
+
+:root {
+  --button-color: white;
+  --button-background-color: #202020;;
+  --button-border-color: #c011ff;
+  --disabled: gray;
+  --button-disabled: darkgray;
+
 }
 
 .top-panel {
@@ -23,8 +32,11 @@ body {
 .top-panel .icon {
   display: none;
 }
+
 @media screen and (max-width: 1200px) {
-  .top-panel a:not(:first-child) {display: none;}
+  .top-panel a:not(:first-child) {
+    display: none;
+  }
   .top-panel a.icon {
     float: right;
     display: block;
@@ -47,6 +59,7 @@ body {
     text-align: left;
   }
 }
+
 .panel-background {
   background: linear-gradient(to bottom, rgb(192, 17, 255) 0%,
     rgba(255, 255, 255, 0) 100%) top,
@@ -64,26 +77,24 @@ body {
   flex: 1;
   flex-direction: row;
   margin-left: 0;
+  vertical-align: middle;
 }
 
 .button {
-  color: white;
-  background-color: #202020;
+  color: var(--button-color);
+  background-color: var(--button-background-color);
   text-align: center;
   font-family: Arial, serif;
   margin: 1em 1em;
   border-radius: 12em;
-  border: 10px solid #c011ff;
+  border: 10px solid var(--button-border-color);
   padding: 20px;
-}
-
-.button-cut {
-  display: inline-block;
+  white-space: normal;
 }
 
 .submit-button:disabled {
-  color: gray;
-  border: 10px solid darkgray;
+  color: var(--disabled);
+  border: 10px solid var(--button-disabled);
 }
 
 .main-navigation a {
@@ -139,7 +150,7 @@ body {
   min-width: 20px;
 }
 
-.menu-item {
+.menu-item-cursor {
   cursor: pointer;
 }
 
@@ -476,6 +487,11 @@ input > disabled {
   align-items: center;
   justify-content: center;
 }
+.vertical-align-center2
+{
+  vertical-align: middle;
+}
+
 
 .sub-navigation-menu {
   font-size: 24px;
@@ -512,22 +528,6 @@ input > disabled {
   overflow: auto;
 }
 
-/*::-webkit-scrollbar {
-  background-color: #49cbe5;
-  min-width: 0.5em;
-}
-::-moz-viewport-scroll{
-  background-color: #49cbe5;
-  min-width: 0.5em;
-}
-.scroller {
-  overflow-y: scroll;
-  scrollbar-color: #0A4C95 #C2D2E4;
-}*/
-
-.select-selected:after {
-}
-
 .custom-select {
   position: relative;
   font-family: Arial;
@@ -550,7 +550,6 @@ input > disabled {
   width: 0;
   height: 0;
   border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
 }
 
 /* Point the arrow upwards when the select box is open (active): */
@@ -564,7 +563,6 @@ input > disabled {
   color: #ffffff;
   padding: 8px 16px;
   border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
 }
 
@@ -582,7 +580,6 @@ input > disabled {
   background-color: yellow;
 }
 
-/* Hide the items when the select box is closed: */
 .select-hide {
   display: none;
 }
@@ -609,3 +606,13 @@ input > disabled {
   position: absolute;
   margin-left: 65vw;
 }
+
+.radio {
+  cursor: pointer;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+

@@ -20,7 +20,6 @@ import {PostPreviewComponent} from './post-preview/post-preview.component';
 import {PostsComponent} from './posts/posts.component';
 import {SearchPostsComponent} from './search-posts/search-posts.component';
 import {SearchBarComponent} from './search-bar/search-bar.component';
-import {DatePickerComponent} from './date-picker/date-picker.component';
 import {ProfileComponent} from './profile/profile.component';
 import {DatePipe} from '@angular/common';
 import { SocialMediaComponent } from './social-media/social-media.component';
@@ -30,6 +29,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { ReportListComponent } from './report-list/report-list.component';
 import { ReportPreviewComponent } from './report-preview/report-preview.component';
 import { ModalInfoComponent } from './modal-info/modal-info.component';
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,6 @@ import { ModalInfoComponent } from './modal-info/modal-info.component';
     PostsComponent,
     SearchPostsComponent,
     SearchBarComponent,
-    DatePickerComponent,
     ProfileComponent,
     SocialMediaComponent,
     CommentSectionComponent,
@@ -56,7 +55,8 @@ import { ModalInfoComponent } from './modal-info/modal-info.component';
     SettingsComponent,
     ReportListComponent,
     ReportPreviewComponent,
-    ModalInfoComponent
+    ModalInfoComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,

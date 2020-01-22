@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {SocialMedia} from "../../model/SocialMedia";
 
 @Component({
   selector: 'app-social-media',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./social-media.component.scss']
 })
 export class SocialMediaComponent implements OnInit {
+  @Input()
+  data: SocialMedia;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
+
   }
+
 
 }

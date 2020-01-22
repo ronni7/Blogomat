@@ -10,8 +10,10 @@ export class SearchPostsComponent implements OnInit {
   @Input()
   authorLocked: boolean;
   private posts: Post[];
+  author: string;
 
   constructor() {
+    this.author = 'Author1';
   }
 
   ngOnInit() {

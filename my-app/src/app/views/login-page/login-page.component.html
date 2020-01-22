@@ -1,0 +1,38 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form div-centered-top-margin">
+  <h1 id="title" class="title content-centered">Sign in</h1>
+  <div class="form-field">
+    <label class="form-label" id="loginLabel" for="login">Login:</label>
+
+    <input formControlName="login" class="form-control"
+           id="login" placeholder="Enter your login" required="true"/>
+<!--    <span class="fa fa-exclamation error-text icon-inside-control">-->
+   <!-- <app-form-error [control]="formGroup.get('login')"></app-form-error>-->
+<!--</span>-->
+  </div>
+
+  <div class="form-field">
+    <label class="form-label" id="passwordLabel" for="password">Password:</label>
+    <input formControlName="password" class="form-control" type="password" id="password"
+           placeholder="********" required="true"/>
+<!--    <span class="fa fa-exclamation error-text icon-inside-control">-->
+        <!--<app-form-error [controlName]="'password'" [control]="formGroup.get('password')"></app-form-error>-->
+  <!--  </span>-->
+  </div>
+
+
+  <input [disabled]="!isValid()" type="submit" value="Sign In!" id="submit"
+         class="submit-button button  tooltip-transparent" />
+  <div>
+    <h2 class="white-text">Don't have an account?</h2>
+  </div>
+
+  <div>
+    <div class="in-form-background">
+      <button id="register-button" class="button tooltip-transparent medium-size-text"
+              routerLink="/register">Sign Up!
+      </button>
+    </div>
+  </div>
+
+</form>
+

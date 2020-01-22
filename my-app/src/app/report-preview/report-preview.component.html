@@ -1,18 +1,14 @@
-<div class="form-style-background">
-  <h1 class="title">{{report.subject === 'Opcja5' ? report.customSubject : report.subject }}</h1>
-  <h2 class="content-centered">Reported by: {{report.reporterID}}</h2>
-  <!--  <h3>See original {{report.postID}}</h3>-->
-  <!--  <div class="form-field horizontal">
-      <label id="messageLabel" class="form-label" for="message">Report message:</label>
-      <textarea id="message" class="form-control" disabled>{{report.message}}</textarea>
-    </div>-->
+<div class="post div-centered-top-margin">
+  <h1 class="title">{{report.subject === 'Other' ? report.customSubject : report.subject }}</h1>
+  <h2 class="content-centered">Reported by: {{'Author1'}}</h2>
   <div id="postContent" class="post-section div-centered post-textarea">
     {{report.message}}
   </div>
   <div>
     <div class="horizontal">
       <input class="button submit-button tooltip-transparent" type="button" value="Delete post" (click)="delete()"/>
-      <input class="button submit-button tooltip-transparent" type="button" value="Block author" (click)="blockAuthor()"/>
+      <input class="button submit-button tooltip-transparent" type="button" value="See reported post"
+             (click)="seePost()"/>
       <input class="button submit-button tooltip-transparent" type="button" value="Dismiss" (click)="dismiss()"/>
     </div>
   </div>

@@ -7,7 +7,7 @@
   </div>
   <div class="white-text">
     <div id="filter" class="horizontal align-center">
-      <label for="filters">Filtry</label>
+      <label for="filters">Filters</label>
       <div id="filters" class="small-combo-button" (click)="dropdownStateChange()">
         <i *ngIf="!dropped" class="icon-fit fa fa-caret-square-o-down"></i>
         <i *ngIf="dropped" class="icon-fit fa fa-caret-square-o-up"></i>
@@ -19,7 +19,7 @@
         <label id="authorLabel" for="author" class="form-label">Author:</label>
         <input id="author" formControlName="author" class="form-control" type="text" placeholder="Author name..."/>
       </div>
-      <div class="form-field"> <!--todo export to standalone component-->
+      <div class="form-field">
         <label id="tagsLabel" for="tags" class="form-label">Tags:</label>
         <input id="tags" formControlName="tags" class="form-control"
                placeholder="Type tags here, divided by a comma ','"/>
@@ -28,9 +28,7 @@
         <label id="publishDateFromLabel" for="publishDateFrom" class="form-label">Published:</label>
         <input id="publishDateFrom" formControlName="publishDateFrom" class="form-control" type="date">
         <input id="publishDateTo" formControlName="publishDateTo" class="form-control" type="date">
-        <label id="maxPerPagelabel" for="maxPerPage" class="form-label">Max results: </label>
-        <input id="maxPerPage" formControlName="dataPerPage" class="form-control" type="number" [value]="10" min="10"
-               max="100"/> <!-- todo think about it-->
+
       </div>
       <input class="button tooltip-transparent medium-size-text" type="submit" value="Apply filters"
               [disabled]="!isFormValid()"/>

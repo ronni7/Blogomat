@@ -1,0 +1,13 @@
+<div class="post form-style-background div-centered-top-margin">
+  <h2 class="content-centered">From: {{contactMessage.firstName}} {{contactMessage.lastName}}</h2>
+  <h3 class="content-centered">{{contactMessage.email}}</h3>
+  <h4 class="content-centered">{{contactMessage.subject}}</h4>
+  <div id="content" class="post-section div-centered post-textarea">
+    {{contactMessage.message}}
+  </div>
+  <div>
+    <div class="content-centered">
+      <input class="button submit-button tooltip-transparent" type="button" value="Dismiss" (click)="close()"/>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+<div class="form-style-background white-text">
+  <h1 class="title">Settings</h1>
+  <h2 class="content-centered">Choose a color schema and decide which personal informations should be public</h2>
+  <div id="section1 horizontal stretch">
+    <div class="horizontal stretch">
+      <div class="stretch form-style-background">
+        <h2 class="content-centered">Theme</h2>
+        <div class="form-field white-text">
+          <label id="defaultLabel" class="form-label" for="default">Dark</label>
+          <input id="default" class="radio" name="theme" type="radio" [value]="selectedTheme"
+                 [checked]="checkActiveTheme('default')"
+                 (change)="selectTheme('default')"/>
+          <i id="defaultIcon" class="fa fa-square"></i>
+        </div>
+        <div class="form-field white-text">
+          <label id="lightLabel" class="form-label" for="light">Light</label>
+          <input id="light" class="radio" name="theme" type="radio" [value]="selectedTheme"
+                 [checked]="checkActiveTheme('light')"
+                 (change)="selectTheme('light')"/>
+          <i id="lightIcon" class="fa fa-square"></i>
+        </div>
+        <div class="form-field white-text">
+
+          <label id="sunnyLabel" class="form-label" for="sunny">Sunny</label>
+          <input id="sunny" class="radio" name="theme" type="radio" [value]="selectedTheme"
+                 [checked]="checkActiveTheme('sunny')"
+                 (change)="selectTheme('sunny')"/>
+          <i id="sunnyIcon" class="fa fa-square"></i>
+        </div>
+        <div class="form-field white-text">
+          <label id="retroLabel" class="form-label" for="retro">Retro</label>
+          <input id="retro" class="radio" name="theme" type="radio" [value]="selectedTheme"
+                 [checked]="checkActiveTheme('retro')"
+                 (change)="selectTheme('retro')"/>
+
+          <i id="retroIcon" class="fa fa-square"></i>
+        </div>
+        <div class="content-centered">
+          <input type="submit" value="Save changes" id="submitTheme" class="submit-button button tooltip-transparent" (click)="saveThemeSettings()"/>
+        </div>
+      </div>
+      <div id="personal-data-panel" class="horizontal stretch">
+        <div class="stretch form-style-background">
+          <h2 class="content-centered">Personal data</h2>
+          <div class="form-field">
+            <label class="form-label" id="usernameLabel" for="username">Username:</label>
+            <app-slider (changed)="personalDataSettings.username=$event" [state]="personalDataSettings.username"
+                        id="username"></app-slider>
+            <div id="usernameValue" class="form-label">{{personalDataSettings.username ? 'Visible' : 'Hidden'}}</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" id="nameLabel" for="name">Name:</label>
+            <app-slider (changed)="personalDataSettings.name=$event" [state]="personalDataSettings.name"
+                        id="name"></app-slider>
+            <div id="nameValue" class="form-label">{{personalDataSettings.name ? 'Visible' : 'Hidden'}}</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" id="surnameLabel" for="surname">Surname:</label>
+            <app-slider (changed)="personalDataSettings.surname=$event" [state]="personalDataSettings.surname"
+                        id="surname"></app-slider>
+            <div id="surnameValue" class="form-label">{{personalDataSettings.surname ? 'Visible' : 'Hidden'}}</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" id="emailLabel" for="email">Email:</label>
+            <app-slider (changed)="personalDataSettings.email=$event" [state]="personalDataSettings.email"
+                        id="email"></app-slider>
+            <div id="emailValue" class="form-label">{{personalDataSettings.email ? 'Visible' : 'Hidden'}}</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" id="registeredLabel" for="registered">Registered:</label>
+            <app-slider (changed)="personalDataSettings.registered=$event" [state]="personalDataSettings.registered"
+                        id="registered"></app-slider>
+            <div id="registeredValue"
+                 class="form-label">{{personalDataSettings.registered ? 'Visible' : 'Hidden'}}</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" id="postsCountLabel" for="postsCount">Posted:</label>
+            <app-slider (changed)="personalDataSettings.postsCount=!personalDataSettings.postsCount"
+                        [state]="personalDataSettings.postsCount"
+                        id="postsCount"></app-slider>
+            <div id="postsCountValue"
+                 class="form-label">{{personalDataSettings.postsCount ? 'Visible' : 'Hidden'}}</div>
+          </div>
+          <div class="content-centered">
+            <input type="submit" value="Save changes" id="submitSaveUserSettings" class="submit-button button tooltip-transparent"
+                   (click)="saveUserSettings()"/>
+          </div>
+        </div>
+      </div>
+      <div class="stretch form-style-background">
+        <h2 class="content-centered">Social media</h2>
+        <div class="form-field">
+          <label class="form-label" id="facebookLabel" for="facebook"><i
+            class="icon-fit fa fa-facebook-square"></i></label>
+          <app-slider (changed)="socialMediaSettings.facebook=$event" [state]="socialMediaSettings.facebook"
+                      id="facebook"></app-slider>
+          <div id="facebookValue" class="form-label">{{socialMediaSettings.facebook ? 'Visible' : 'Hidden'}}</div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" id="instagramLabel" for="instagram"><i class="icon-fit fa fa-instagram"></i></label>
+          <app-slider (changed)="socialMediaSettings.instagram=$event" [state]="socialMediaSettings.instagram"
+                      id="instagram"></app-slider>
+          <div id="instagramValue" class="form-label">{{socialMediaSettings.instagram ? 'Visible' : 'Hidden'}}</div>
+        </div>
+        <div class="form-field">
+          <label class="form-label " id="snapchatLabel" for="snapchat"><i
+            class="icon-fit fa fa-snapchat-square"></i></label>
+          <app-slider (changed)="socialMediaSettings.snapchat=$event" [state]="socialMediaSettings.snapchat"
+                      id="snapchat"></app-slider>
+          <div id="snapchatValue" class="form-label">{{socialMediaSettings.snapchat ? 'Visible' : 'Hidden'}}</div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" id="twitterLabel" for="twitter"><i
+            class="icon-fit fa fa-twitter-square"></i></label>
+          <app-slider (changed)="socialMediaSettings.twitter=$event" [state]="socialMediaSettings.twitter"
+                      id="twitter"></app-slider>
+          <div id="twitterValue" class="form-label">{{socialMediaSettings.twitter ? 'Visible' : 'Hidden'}}</div>
+        </div>
+        <div class="content-centered">
+          <input type="submit" value="Save changes" id="submitSocialMedia" class="submit-button button tooltip-transparent" (click)="saveSocialMediaSettings()"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+

@@ -1,0 +1,13 @@
+<div class="horizontal white-text sub-navigation-menu">
+  <ul class="navigation on-page-navigation form-style-background white-text">
+    <li (click)="switchAction(1);" class="tooltip-transparent menu-item-cursor stretch"> Reports </li>
+    <div class="vertical-span"></div>
+    <li (click)="switchAction(2);" class="tooltip-transparent menu-item-cursor stretch"> Contact messages</li>
+  </ul>
+</div>
+<div *ngIf="action===1" class="div-centered-top-margin">
+  <app-report-list></app-report-list>
+</div>
+<div *ngIf="action===2" class="div-centered-top-margin">
+ <app-contact-message-list></app-contact-message-list>
+</div>

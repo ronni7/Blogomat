@@ -1,21 +1,16 @@
 <div  class="top-panel panel-background">
   <div id="navBar" class="header">
-    <a routerLink="/login">Blogomat.pl Twój styl, Twój blog</a>
+    <a routerLink="/">Blogomat, your style, your blog.</a>
     <div  class="navigation-bar">
       <ul class="navigation main-navigation">
-        <li class="tooltip header-navigation-element menu-item-cursor">
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-          </a>
-        </li>
         <li class="tooltip header-navigation-element menu-item-cursor"><a routerLink="/about">About</a></li>
         <li class="tooltip header-navigation-element menu-item-cursor"><a routerLink="/">Home</a></li>
         <li class="tooltip header-navigation-element menu-item-cursor"><a routerLink="/login">Login</a></li>
-        <li class="tooltip header-navigation-element menu-item-cursor">
+        <li [hidden]="authenticated" class="tooltip header-navigation-element menu-item-cursor">
           <app-user-profile class=""></app-user-profile>
         </li>
-        <li class="tooltip header-navigation-element menu-item-cursor">
-          <a routerLink="/reports">Admin</a>
+        <li [hidden]="!authenticated" class="tooltip header-navigation-element menu-item-cursor">
+          <a routerLink="/admin">Admin</a>
         </li>
       </ul>
     </div>

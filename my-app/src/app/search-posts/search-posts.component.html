@@ -1,6 +1,6 @@
 <div class="form">
   <h1 class="title white-text">Search posts</h1>
   <app-search-bar (postsSearchedEvent)="refreshPosts($event)"
-                  [authorLocked]="authorLocked"></app-search-bar>
+                  [authorLocked]="authorLocked" [author]="author"></app-search-bar>
   <app-posts  [posts]="posts" [perRow]="2"></app-posts>
 </div>

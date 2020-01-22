@@ -9,6 +9,9 @@ import {DatePipe} from '@angular/common';
 import {PostReport} from '../model/PostReport';
 import {Comment} from '../model/Comment';
 import {Observable} from 'rxjs';
+import {PersonalDataSettings} from "../model/PersonalDataSettings";
+import {SocialMediaSettings} from "../model/SocialMediaSettings";
+import {ThemeTO} from "../model/ThemeTO";
 
 
 @Injectable({
@@ -23,20 +26,69 @@ export class TestHttpServiceService {
     return this.http.get('https://reqres.in/api/users');
   }
 
-  logIn(login: string, password: string): Observable<any>  {
+  logIn(login: string, password: string): Observable<any> {
     return this.http.post('http://localhost:8080/user/login', {login, password});
-  //  return console.log(login, password);
+    //  return console.log(login, password);
   }
 
-  register(user: User): Observable<any>  {
-     return this.http.post('https:8080/user/register', user);
+  register(user: User): Observable<any> {
+    return this.http.post('https:8080/user/register', user);
 
   }
 
   getPosts(criteria: SearchCriteria): Post[] {
     let mock: Post[] = new Array<Post>();
     let id = 1;
-    mock.push(new Post(id++, 'Title1', ['tag1', 'tag2', 'tag3', 'tag4', 'tag5'], null, ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n' +
+    const tab: string[] = new Array<string>();
+    tab[0] = 'tag1';
+    tab[1] = 'tag2';
+    tab[2] = 'tag3';
+    tab[3] = 'tag4';
+    tab[4] = 'tag5';
+    const now = new Date();
+    mock.push(new Post(id++,
+      'Another day', tab.slice(0, 2), null, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna' +
+      '    aliqua. Nulla pellentesque dignissim enim sit amet venenatis urna cursus eget. Elit eget gravida cum sociis natoque' +
+      '    penatibus et magnis. Vel risus commodo viverra maecenas accumsan lacus vel facilisis. Adipiscing elit pellentesque' +
+      '    habitant morbi tristique senectus et netus. Sit amet facilisis magna etiam tempor orci eu lobortis elementum. Vitae' +
+      '    tortor condimentum lacinia quis. Pellentesque habitant morbi tristique senectus et netus et malesuada. Mi ipsum' +
+      '    faucibus vitae aliquet. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Pulvinar' +
+      '    pellentesque habitant morbi tristique. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a. Nulla' +
+      '    posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. At augue eget arcu dictum varius duis at.' +
+      '    Venenatis' +
+      '    tellus in metus vulputate. Arcu risus quis varius quam quisque. Arcu non sodales neque sodales ut etiam sit.' +
+      '    Faucibus' +
+      '    purus in massa tempor. Justo donec enim diam vulputate ut pharetra sit amet. Velit scelerisque in dictum non.',
+      new Date(), 'Roberto'
+    ))
+    ;
+    mock.push(new Post(id++, 'Social media', tab.slice(2, 4), null, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna' +
+      'aliqua. Nulla pellentesque dignissim enim sit amet venenatis urna cursus eget. Elit eget gravida cum sociis natoque' +
+      'penatibus et magnis. Vel risus commodo viverra maecenas accumsan lacus vel facilisis. Adipiscing elit pellentesque' +
+      'habitant morbi tristique senectus et netus. Sit amet facilisis magna etiam tempor orci eu lobortis elementum. Vitae' +
+      'tortor condimentum lacinia quis. Pellentesque habitant morbi tristique senectus et netus et malesuada. Mi ipsum' +
+      'faucibus vitae aliquet. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh.',
+      new Date(now.setDate(now.getDate() - 1)), 'cohen12'));
+    mock.push(new Post(id++, 'My first poem', tab.slice(3, 5), null, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna' +
+      'aliqua. Nulla pellentesque dignissim enim sit amet venenatis urna cursus eget. Elit eget gravida cum sociis natoque' +
+      'penatibus et magnis. Vel risus commodo viverra maecenas accumsan lacus vel facilisis. Adipiscing elit pellentesque' +
+      'habitant morbi tristique senectus et netus. Sit amet facilisis magna etiam tempor orci eu lobortis elementum. Vitae' +
+      'tortor condimentum lacinia quis. Pellentesque habitant morbi tristique senectus et netus et malesuada. Mi ipsum' +
+      'faucibus vitae aliquet. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh.',
+      new Date(now.setDate(now.getDate() - 1)), 'John Smith'));
+    mock.push(new Post(id++, 'Heaven & Hell', tab.slice(1, 4), null, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna' +
+      'aliqua. Nulla pellentesque dignissim enim sit amet venenatis urna cursus eget. Elit eget gravida cum sociis natoque' +
+      'penatibus et magnis. Vel risus commodo viverra maecenas accumsan lacus vel facilisis. Adipiscing elit pellentesque' +
+      'habitant morbi tristique senectus et netus. Sit amet facilisis magna etiam tempor orci eu lobortis elementum. Vitae' +
+      'tortor condimentum lacinia quis. Pellentesque habitant morbi tristique senectus et netus et malesuada. Mi ipsum' +
+      'faucibus vitae aliquet. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh.',
+      new Date(now.setDate(now.getDate() - 1)), 'Sam Paul'));
+    mock.push(new Post(id++, 'Web developer part 4', tab.slice(0, 1), null, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna faucibus vitae aliquet. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh.',
+      new Date(now.setDate(now.getDate() - 2)), 'Author1'));
+    mock.push(new Post(id, 'A story to tell', ['poem', 'wizard', 'magic', 'fantasy'], null, 'A long story about...',
+      new Date(), 'Author1'));
+
+    /*mock.push(new Post(id++, 'Title1', ['tag1', 'tag2', 'tag3', 'tag4', 'tag5'], null, ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n' +
       '    aliqua. Nulla pellentesque dignissim enim sit amet venenatis urna cursus eget. Elit eget gravida cum sociis natoque\n' +
       '    penatibus et magnis. Vel risus commodo viverra maecenas accumsan lacus vel facilisis. Adipiscing elit pellentesque\n' +
       '    habitant morbi tristique senectus et netus. Sit amet facilisis magna etiam tempor orci eu lobortis elementum. Vitae\n' +
@@ -101,7 +153,7 @@ export class TestHttpServiceService {
     mock.push(new Post(id++, 'Title9', ['tag3', 'tag5'], null, 'contentttttttttttttttttt83tttttttttttttttt', new Date(Date.parse('2019-12-20')), 'User1'));
     mock.push(new Post(id++, 'Title10', ['tag1', 'tag3', 'tag4', 'tag5'], null, 'contentttt9tttttttttttttttttttttttttttttt', new Date(Date.parse('2019-12-21')), 'User1'));
     mock.push(new Post(id++, 'Title11', ['tag1', 'tag2', 'tag5'], null, 'contentttttttttttttt10tttttttttttttttttttt', new Date(Date.parse('2019-12-22')), 'User1'));
-
+*/
     if (criteria.title) {
       const result: Post[] = new Array<Post>();
       mock.forEach(value => {
@@ -164,29 +216,32 @@ export class TestHttpServiceService {
     return mock;
   }
 
-  sendContactMessage(value: ContactMessage) {
-    // return this.http.post('https:8080/admin/contact', value; //
-    console.log(value, ' Message sent');
+  sendContactMessage(value: ContactMessage): Observable<any> {
+    return this.http.post('http://localhost:8080/user/contactAdmin', value); //
   }
 
-  getUserDetails(userID: number): UserDetails {
-    // return this.http.get('https:8080/getUserDetails/{{userID}}'); // todo check if right
+  getUserDetails(userID: number): /*Observable<any>*/ any {
+    // return this.http.get('http://localhost:8080/user/getUserDetails/{{userID}}'); // todo check if right
     const user = new UserDetails();
-    user.id = 1;
-    user.username = 'Username1';
+    user.username = 'Author1';
     user.name = 'Name1';
     user.surname = 'Surname1';
     user.email = 'email@email.com';
-    user.registered = new Date();
-    user.postsCount = 100;
+    user.registered = new Date(2020, 0, 12, 0, 0, 0);
+    user.postsCount = 2;
     user.image = null;
     user.facebook = 'www.facebook.com/test.user1';
     user.instagram = 'www.instargram.com/test.user1';
     user.twitter = 'www.twitter.com/test.user1';
     user.snapchat = 'www.snapchat.com/test.user1';
     return user;
+    // return this.http.get('http://localhost:8080/user/getUserDetails/' + userID);
+
   }
 
+  getUserSocialMedia(author: string): Observable<any> {
+    return this.http.get('http://localhost:8080/user/getUserSocialMedia/' + author);
+  }
 
   saveUserDetails(user: UserDetails) {
     // return this.http.post('https:8080/user/saveUserDetails', user); //todo check if right, may use PUT or user ID in post
@@ -198,7 +253,7 @@ export class TestHttpServiceService {
   }
 
 
-  reportPost(report: PostReport): Observable<any>  {
+  reportPost(report: PostReport): Observable<any> {
     return this.http.post('http://localhost:8080/post/reportPost', report);
 
   }
@@ -245,7 +300,54 @@ export class TestHttpServiceService {
 
   getPostsSortedWithCriteria(sortField: string, order: 'ASC' | 'DESC', criteria: SearchCriteria): Observable<any> {
     return this.http.post('http://localhost:8080/post/postsFiltered',
-      {sort: sortField.trim(), order: order, searchCriteria: criteria}
-      );
+      {sort: sortField.trim(), order, searchCriteria: criteria}
+    );
+  }
+
+  deleteContactMessage(id: number) {
+    return this.http.delete('http://localhost:8080/admin/deleteContactMessage/' + id);
+  }
+
+  getContactMessages(): Observable<any> {
+    return this.http.get('http://localhost:8080/admin/contactMessages');
+  }
+
+  getAuthorPosts(username: string): Observable<any> {
+    return this.http.post('http://localhost:8080/post/postsByAuthorName',
+      username
+    );
+  }
+
+  saveSocialMedia(socialMedia: any): Observable<any> {
+    return this.http.post('http://localhost:8080/post/postsByAuthorName', socialMedia
+    );
+  }
+
+  getUserSettings(userID: number): Observable<any> {
+    return this.http.get('http://localhost:8080/user/getPersonalDataSettings/' + userID);
+  }
+
+  saveUserSettings(personalDataSettings: PersonalDataSettings): Observable<any> {
+    return this.http.post('http://localhost:8080/user/savePersonalDataSettings', personalDataSettings);
+  }
+
+  getSocialMediaSettings(userID: number): Observable<any> {
+    return this.http.get('http://localhost:8080/user/getSocialMediaSettings/' + userID);
+  }
+
+  saveSocialMediaSettings(socialMediaSettings: SocialMediaSettings): Observable<any> {
+    return this.http.post('http://localhost:8080/user/saveSocialMediaSettings', socialMediaSettings);
+  }
+
+  getSelectedThemeName(userID: number): Observable<any> {
+    return this.http.get('http://localhost:8080/user/getSelectedTheme/' + userID);
+  }
+
+  saveSelectedThemeName(themeTO: ThemeTO): Observable<any> {
+    return this.http.post('http://localhost:8080/user/saveSelectedTheme', themeTO);
+  }
+
+  getPostByID(postID: any): Observable<any> {
+    return this.http.get('http://localhost:8080/post/getPost/' + postID);
   }
 }

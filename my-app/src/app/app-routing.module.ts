@@ -1,17 +1,16 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
-import {MainPageComponent} from './main-page/main-page.component';
-import {LoginPageComponent} from './login-page/login-page.component';
-import {AboutComponent} from './about/about.component';
-import {RegisterPageComponent} from './register-page/register-page.component';
-import {ManagementComponent} from './management/management.component';
+import {MainPageComponent} from './views/main-page/main-page.component';
+import {LoginPageComponent} from './views/login-page/login-page.component';
+import {AboutComponent} from './views/about/about.component';
+import {RegisterPageComponent} from './views/register-page/register-page.component';
+import {ManagementComponent} from './views/management/management.component';
 import {PostPreviewComponent} from './post-preview/post-preview.component';
 import {PostsComponent} from './posts/posts.component';
-import {ProfileComponent} from './profile/profile.component';
-import {SettingsComponent} from './settings/settings.component';
-import {ReportListComponent} from "./report-list/report-list.component";
-
+import {ProfileComponent} from './views/profile/profile.component';
+import {SettingsComponent} from './views/settings/settings.component';
+import {AdminComponent} from './views/admin/admin.component';
 
 
 const routes: Routes = [
@@ -25,7 +24,7 @@ const routes: Routes = [
   {path: 'posts', component: PostsComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'account', component: ProfileComponent},
-  {path: 'reports', component: ReportListComponent}
+  {path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({

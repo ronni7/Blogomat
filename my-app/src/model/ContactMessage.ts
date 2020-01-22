@@ -1,8 +1,8 @@
 export class ContactMessage {
-  private firstName: string;
-  private lastName: string;
-  private email: string;
-  private subject: string;
-  private message: string;
-
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  subject: string;
+  message: string;
 }

@@ -1,0 +1,78 @@
+<div id="section1" class="form-style-background white-text">
+  <h1 class="content-centered">Personal data</h1>
+  <div class="form-field">
+    <label class="form-label" id="usernameLabel" for="username">Username:</label>
+    <input id="username" class="form-control" type="text" maxlength="32"
+           required="true" [hidden]="!edit && userSettings.username" [(ngModel)]="userDetails.username"
+           [disabled]="!edit"/>
+  </div>
+  <div class="form-field">
+    <label class="form-label" id="nameLabel" for="name">Name:</label>
+    <input id="name" class="form-control" type="text" maxlength="32"
+           required="true" [hidden]="!edit && userSettings.name" [(ngModel)]="userDetails.name" [disabled]="!edit"/>
+  </div>
+  <div class="form-field">
+    <label class="form-label" id="surnameLabel" for="surname">Surname:</label>
+    <input id="surname" class="form-control" type="text" maxlength="32"
+           required="true" [hidden]="!edit && userSettings.surname" [(ngModel)]="userDetails.surname"
+           [disabled]="!edit"/>
+  </div>
+  <div class="form-field">
+    <label class="form-label" id="emailLabel" for="email">Email:</label>
+    <input id="email" class="form-control" type="text" maxlength="32"
+           required="true" [hidden]="!edit && userSettings.email" [(ngModel)]="userDetails.email" [disabled]="!edit"/>
+  </div>
+  <div class="form-field">
+    <label class="form-label" id="registeredLabel" for="registered">Registered:</label>
+    <input id="registered" class="form-control" type="date" maxlength="32"
+           required="true" [hidden]="!edit && userSettings.registered"
+           [ngModel]="userDetails.registered | date:'yyyy-MM-dd'"
+           (ngModelChange)="userDetails.registered=$event" disabled/>
+    <label class="form-label" id="postsCountLabel" for="postsCount">Posted:</label>
+    <input id="postsCount" class="form-control" type="text" maxlength="32"
+           required="true" [hidden]="!edit && userSettings.postsCount" [(ngModel)]="userDetails.postsCount" disabled/>
+  </div>
+  <div *ngIf="edit" class="content-centered">
+    <input type="submit" value="Save changes" id="submit" class="submit-button button tooltip-transparent"
+           (click)="saveChanges()"/>
+  </div>
+</div>
+<div class="horizontal div-centered-top-margin">
+  <div id="section2" class="form form-style-background white-text content-centered align-center">
+    <h1 class="content-centered">Blog statistics</h1>
+    <canvas #canvas id="chartTest"></canvas>
+  </div>
+  <div class="span"></div>
+  <div id="section3" class="form-style-background white-text">
+    <h1 class="content-centered">Social media</h1>
+    <div class="form-field">
+      <label class="form-label" id="facebookLabel" for="facebook"><i class="icon-fit fa fa-facebook-square"></i></label>
+      <input id="facebook" class="form-control" type="text" maxlength="32"
+             required="true" [hidden]="!edit && socialMediaSettings.facebook"
+             [(ngModel)]="userDetails.facebook" [disabled]="!edit"/>
+    </div>
+    <div class="form-field">
+      <label class="form-label" id="instagramLabel" for="instagram"><i class="icon-fit fa fa-instagram"></i></label>
+      <input id="instagram" class="form-control" type="text" maxlength="32"
+             required="true" [hidden]="!edit && socialMediaSettings.instagram"
+             [(ngModel)]="userDetails.instagram" [disabled]="!edit"/>
+    </div>
+    <div class="form-field ">
+      <label class="form-label " id="snapchatLabel" for="snapchat"><i
+        class="icon-fit fa fa-snapchat-square"></i></label>
+      <input id="snapchat" class="form-control" type="text" maxlength="32"
+             required="true" [hidden]="!edit && socialMediaSettings.facebook"
+             [(ngModel)]="userDetails.snapchat" [disabled]="!edit"/>
+    </div>
+    <div class="form-field">
+      <label class="form-label" id="twitterLabel" for="twitter"><i class="icon-fit fa fa-twitter-square"></i></label>
+      <input id="twitter" class="form-control" type="text" maxlength="32"
+             required="true" [hidden]="!edit && socialMediaSettings.facebook"
+             [(ngModel)]="userDetails.twitter" [disabled]="!edit"/>
+    </div>
+    <div *ngIf="edit" class="content-centered">
+      <input type="submit" value="Save changes" id="submitSocialMedia"
+             class="submit-button button tooltip-transparent" (click)="saveSocialMediaChanges()"/>
+    </div>
+  </div>
+</div>

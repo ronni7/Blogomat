@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {Post} from '../../model/Post';
 import {TestHttpServiceService} from '../test-http-service.service';
 import {Comment} from '../../model/Comment';
+import {SocialMedia} from "../../model/SocialMedia";
 
 @Component({
   selector: 'app-post-preview',
@@ -23,6 +24,9 @@ export class PostPreviewComponent implements OnInit {
   private addCommentVisible: boolean = false;
   commentContent: string;
   addingCommentFailed: boolean = false;
+  private socialMedia: SocialMedia;
+  private adminBack: boolean = false;
+  @Output() reload = new EventEmitter<boolean>();
 
 
   constructor(private router: Router, private httpService: TestHttpServiceService) {
@@ -30,20 +34,34 @@ export class PostPreviewComponent implements OnInit {
     this.commentCount = this.comments.length;
     if (this.router.getCurrentNavigation()) {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.data = this.router.getCurrentNavigation().extras.state.data as Post;
-        this.backVisible = this.router.getCurrentNavigation().extras.state.back as boolean;
+        if (!this.router.getCurrentNavigation().extras.state.postID) {
+          this.data = this.router.getCurrentNavigation().extras.state.data as Post;
+          this.backVisible = this.router.getCurrentNavigation().extras.state.back as boolean;
+        } else if (this.router.getCurrentNavigation().extras.state.postID) {
+          this.httpService.getPostByID(this.router.getCurrentNavigation().extras.state.postID).subscribe(response => {
+            if (response) {
+              this.data = response as Post;
+              this.adminBack = true;
+              this.expanded = true;
+            }
+          });
+        }
       }
     }
 
- }
+  }
 
   ngOnInit() {
-    if (this.data) {
+    if (this.data && !this.backVisible) {
       this.contentHidden();
       this.getLikes(this.data.id);
       this.getComments(this.data.id);
-
+      this.getSocialMedia(this.data.author);
     }
+  }
+
+  backToAdmin() {
+    return this.router.navigate(['/admin']);
   }
 
   back() {
@@ -54,6 +72,8 @@ export class PostPreviewComponent implements OnInit {
   }
 
   searchCurrentTag(tag: string) {
+    if (this.backVisible)
+      return;
     return this.router.navigate(['/'], {
       state: {searchTag: tag, selectedAction: 3}
     });
@@ -61,13 +81,11 @@ export class PostPreviewComponent implements OnInit {
   }
 
   likePost() {
-    console.log('click works');
+    if (this.backVisible)
+      return;
     this.httpService.likePost(this.data.id, 1).subscribe(response => {
-      if (response) {
-        console.log('like works: response is', response);
-        this.likes++; //todo remove xd
-        //gray the like icon bro
-      }
+
+      this.getLikes(this.data.id);
     });
   }
 
@@ -95,9 +113,8 @@ export class PostPreviewComponent implements OnInit {
 
   navigateToAuthorProfile() {
     return this.router.navigate(['/account'], {
-      state: {edit: false}
-      //  todo state: {edit: this.data.author}
-    });/*this.data.author === this.userService.getLoggedUser()*/
+      state: {edit: false, userID: this.socialMedia.userID}
+    });
 
   }
 
@@ -115,6 +132,9 @@ export class PostPreviewComponent implements OnInit {
   }
 
   toggleAddComment() {
+    if (this.backVisible)
+      return;
+    this.commentContent = '';
     this.addCommentVisible = !this.addCommentVisible;
     console.log(this.addCommentVisible);
   }
@@ -124,10 +144,10 @@ export class PostPreviewComponent implements OnInit {
   }
 
   addComment() {
-    if (this.commentContent && this.comments.length > 1 && this.comments.length < 255) {
+    if (this.commentContent && this.commentContent.length > 1 && this.commentContent.length < 255) {
       this.httpService.addComment(new Comment(this.data.id, new Date(), this.data.author, this.commentContent))
         .subscribe(response => {
-
+          this.getComments(this.data.id);
           this.toggleAddComment();
         });
     } else {
@@ -135,4 +155,11 @@ export class PostPreviewComponent implements OnInit {
     }
   }
 
+  getSocialMedia(author: string) {
+    this.httpService.getUserSocialMedia(author).subscribe(response => {
+      if (response) {
+        this.socialMedia = response as SocialMedia;
+      }
+    });
+  }
 }

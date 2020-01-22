@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {PostReport} from "../../model/PostReport";
-import {TestHttpServiceService} from "../test-http-service.service";
+import {PostReport} from '../../model/PostReport';
+import {TestHttpServiceService} from '../test-http-service.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-report-preview',
@@ -12,7 +13,8 @@ export class ReportPreviewComponent implements OnInit {
   report: PostReport;
   @Output() actionEvent = new EventEmitter<number>();
 
-  constructor(private httpService: TestHttpServiceService) {
+
+  constructor(  private router: Router,private httpService: TestHttpServiceService) {
   }
 
   ngOnInit() {
@@ -25,8 +27,11 @@ export class ReportPreviewComponent implements OnInit {
     this.dismiss();
   }
 
-  blockAuthor() {
-    this.dismiss();
+  seePost() {
+    //przejscie na  posta i podanie id posta
+    return this.router.navigate(['/preview'], {
+      state: {postID: this.report.postID, back: true}
+    });
   }
 
   dismiss() {

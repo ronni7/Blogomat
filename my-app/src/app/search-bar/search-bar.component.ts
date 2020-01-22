@@ -15,6 +15,8 @@ export class SearchBarComponent implements OnInit {
   @Input()
   authorLocked: boolean;
   @Input()
+  author: string;
+  @Input()
   currentPage = 1;
   @Input()
   searchTag: string;
@@ -37,6 +39,11 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.searchTag, 'jest czy nie ma');
+    if(this.authorLocked)
+    {
+      this.dropped = true;
+      this.formGroup.controls.author.setValue(this.author);
+    }
     if (this.searchTag) {
       //    console.log('powinno dzialać');
       this.dropped = true;

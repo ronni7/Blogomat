@@ -12,7 +12,7 @@
         <a class="menu-item-link">Blog management</a>
       </li>
       <li class="menu-item-cursor click-disabled">───────</li>
-      <li (click)="showMenu()" class="tooltip-transparent menu-item-cursor" routerLink="/">
+      <li (click)="clearContext();showMenu();" class="tooltip-transparent menu-item-cursor" routerLink="/">
         <a class="menu-item-link">Logout</a>
       </li>
     </ul>

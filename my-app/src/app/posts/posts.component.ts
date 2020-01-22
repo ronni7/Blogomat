@@ -12,37 +12,41 @@ import {SearchCriteria} from '../../model/SearchCriteria';
 export class PostsComponent implements OnInit {
 
   @Input()
-  sortBy: string = 'publishDate';
+  sortBy = 'publishDate';
   @Input()
   order: 'ASC' | 'DESC' = 'DESC';
   @Input()
   posts: Post[];
-  searchCriteria: SearchCriteria = new SearchCriteria(); // todo delete
   @Input()
   user: User;
   @Input()
   perRow = 1;
 
   constructor(private httpService: TestHttpServiceService) {
-    // this.searchCriteria.user = this.user;
-    // this.searchCriteria.dataPerPage = 10;
-    //  this.searchCriteria.author = this.user.username;
 
   }
 
   ngOnInit() {
-    if (!this.posts) {
-      console.log('sortByu', this.sortBy);
+    if (this.user) {
+      this.httpService.getAuthorPosts(this.user.username).subscribe(response => {
+          if (response) {
+            this.posts = response as Post[];
+          }
+        },
+        error => {
+          console.log('error:', error);
+        }
+      );
+    }
+    if (!this.user && !this.posts) {
       // this.posts = this.httpService.getPosts(this.searchCriteria); //todo
       if (this.sortBy && this.sortBy === 'likes') {
-        console.log('udalo sie');
         this.httpService.getPostsSortedByLikes().subscribe(response => {
             if (response) {
               this.posts = response as Post[];
             }
           },
           error => {
-            console.log('error:', error);
           }
         );
       } else {
@@ -52,7 +56,6 @@ export class PostsComponent implements OnInit {
             }
           },
           error => {
-            console.log('error:', error);
           }
         );
       }

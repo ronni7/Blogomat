@@ -1,0 +1,33 @@
+<div class="horizontal white-text sub-navigation-menu">
+  <ul class="navigation on-page-navigation form-style-background white-text">
+    <li (click)="selectedAction=1" class="tooltip-transparent menu-item-cursor stretch"><a>Recent</a></li>
+    <div class="vertical-span"></div>
+    <li (click)="selectedAction=2" class="tooltip-transparent menu-item-cursor stretch"><a>Best</a></li>
+    <div class="vertical-span"></div>
+    <li (click)="selectedAction=3" class="tooltip-transparent menu-item-cursor stretch"><a>Search</a></li>
+  </ul>
+</div>
+<div id="content" class="div-centered-top-margin form-style-background">
+  <div *ngIf="selectedAction===1" class="div-centered-top-margin">
+    <div id="recent" class="div-centered-top-margin form-style-background">
+      <h1 class="content-centered title">Recent</h1>
+      <app-posts [sortBy]="'publishDate'" [order]="'DESC'" [perRow]="2" ></app-posts>
+      <!--per row attribute should be set from user service-->
+    </div>
+  </div>
+  <div *ngIf="selectedAction===2" class="div-centered-top-margin">
+    <div id="best" class="div-centered-top-margin form-style-background">
+      <h1 class="content-centered title">Best</h1>
+      <app-posts [sortBy]="'likes'" [order]="'DESC'" [perRow]="2" ></app-posts>
+    </div>
+  </div>
+  <div *ngIf="selectedAction===3 " class="form-style-background">
+    <h1 class="title white-text">Search posts</h1>
+    <app-search-bar [searchTag]="preselectedTag" (postsSearchedEvent)="refreshPosts($event)" *ngIf="selectedAction===3"
+                    [authorLocked]="false"></app-search-bar>
+    <app-posts [perRow]="2" [user]="user ? user: makeUser()"
+               [posts]="searchedPosts"></app-posts><!-- todo delete that ternary-if-->
+  </div>
+</div>
+
+

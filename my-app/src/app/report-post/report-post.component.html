@@ -6,11 +6,11 @@
 
     <select [ngModel]="selectedOption" (ngModelChange)="onChange($event)" formControlName="subject" id="subject"
             class="stretch form-control combo-box">
-      <option class="combo-box-item" [value]="1">Opcja1</option>
-      <option class="combo-box-item" [value]="2">Opcja2</option>
-      <option class="combo-box-item" [value]="3">Opcja3</option>
-      <option class="combo-box-item" [value]="4">Opcja4</option>
-      <option class="combo-box-item" [value]="5">Opcja5</option>
+      <option class="combo-box-item" [value]="'Spam'">Spam</option>
+      <option class="combo-box-item" [value]="'Hate speech'">Hate speech</option>
+      <option class="combo-box-item" [value]="'Inappropriate language'">Inappropriate language</option>
+      <option class="combo-box-item" [value]="'Content against the rules'">Content against the rules</option>
+      <option class="combo-box-item" [value]="'Other'">Other</option>
     </select>
 
   </div>

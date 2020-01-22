@@ -11,7 +11,7 @@
   <div [hidden]="expanded" id="postContent" class="post-section div-centered post-textarea">
     {{data.postContent.substring(0, 255)}}
   </div>
-  <input type="button" value="expand" [hidden]="expanded" id="more" (click)="expand()"
+  <input type="button" value="Expand" [hidden]="backVisible || expanded" id="more" (click)="expand()"
          class="button submit-button tooltip-transparent align-center"
   />
   <div [hidden]="!expanded" id="postContent2" class="post-section div-centered post-textarea">
@@ -32,15 +32,9 @@
       <div class="horizontal-item">{{likes}}</div>
     </div>
 
-     <!-- <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"
-           data-layout="button" data-size="large">
-        <a target="_blank"
-           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-           class="fb-xfbml-parse-ignore">Udostępnij</a>
-    </div>-->
     <div class="vertical-span"></div>
     <div class="vertical-align-center">
-      <app-social-media></app-social-media>
+      <app-social-media [data]="socialMedia"></app-social-media>
     </div>
     <div class="vertical-span vertical"></div>
     <div class="vertical-align-center menu-item-cursor" (click)="navigateToAuthorProfile()">
@@ -70,18 +64,21 @@
     </div>
     <div [hidden]="!addCommentVisible">
       <div class="form-field">
-        <textarea id="comment" [(ngModel)]="commentContent" class="form-control" [maxLength]="256"></textarea>
+        <textarea id="comment" [(ngModel)]="commentContent" class="form-control" autocomplete="off" [minLength]="8"
+                  [maxLength]="256"></textarea>
         <div class="vertical medium-size-text">
           <i id="check" class="fa fa-check-circle-o" (click)="addComment()"></i>
           <i id="times" class="fa fa-times-circle-o" (click)="toggleAddComment()"></i>
         </div>
         <app-modal-info (closeEvent)="toggleCommentFailed()" [hidden]="!addingCommentFailed"
-                        [message]="'Comment cannot be empty or too long'"></app-modal-info>
+                        [message]="'Comment content is too short.\n Minimum 8 characters.'"></app-modal-info>
       </div>
     </div>
     <app-comment-section *ngIf="commentsDropped" [comments]="comments"></app-comment-section>
   </div>
   <input *ngIf="backVisible" type="button" value="Back" class="button submit-button tooltip-transparent"
          (click)="back()"/>
+  <input *ngIf="adminBack" type="button" value="Back" class="button submit-button tooltip-transparent"
+         (click)="backToAdmin()"/>
 </div>
 

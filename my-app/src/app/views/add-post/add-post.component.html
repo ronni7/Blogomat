@@ -1,0 +1,24 @@
+<form [formGroup]="formGroup" class="form" (ngSubmit)="publish()">
+  <h1 class="title white-text">Add post</h1>
+  <div class="form-field">
+    <label id="titleLabel" class="form-label" for="title">Title:</label>
+    <input formControlName="title" class="form-control" type="text" id="title"
+           placeholder="Insert title here..." required="true"/>
+  </div>
+  <div class="form-field">
+    <label id="tagsLabel" for="tags" class="form-label">Tags:</label>
+    <input formControlName="tags" class="form-control" id="tags" placeholder="Type tags here, divided by a comma ','"/>
+  </div>
+
+  <div class="form-field">
+    <label id="postContentLabel" for="postContentLabel" class="form-label">Content:</label>
+    <textarea formControlName="postContent" class="form-control" id="postContent"
+              placeholder="Add your content here"></textarea>
+  </div>
+  <input type="button" value="Preview" id="preview" [disabled]="!isFormValid()"
+         class="submit-button button tooltip-transparent" (click)="routeToPreview()"/>
+
+  <input type="submit" value="Publish" id="submit" [disabled]="!isFormValid()"
+         class="submit-button button tooltip-transparent"/>
+
+</form>

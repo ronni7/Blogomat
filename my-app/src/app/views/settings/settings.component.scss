@@ -1,0 +1,65 @@
+#red {
+  color: red;
+}
+
+#usernameLabel, #nameLabel, #surnameLabel, #emailLabel, #postsCountLabel, #registeredLabel {
+  width: 6em;
+  min-width: 6em;
+}
+#username, #name, #surname, #email, #postsCount, #registered {
+  width: 5em;
+  min-width: 5em;
+}
+
+#usernameValue, #nameValue, #surnameValue, #emailValue, #postsCountValue, #registeredValue {
+  width: 4em;
+  min-width: 4em;
+}
+
+#facebookLabel, #snapchatLabel, #instagramLabel, #twitterLabel{
+  width: 3em;
+  min-width: 3em;
+}
+#facebook, #snapchat, #instagram, #twitter {
+  width: 5em;
+  min-width: 5em;
+}
+
+#facebookValue, #snapchatValue, #instagramValue, #twitterValue {
+  width: 4em;
+  min-width: 4em;
+}
+
+#defaultIcon, #lightIcon, #sunnyIcon, #retroIcon {
+  font-size: 25px;
+  width: 1em;
+}
+#default, #light, #sunny, #retro {
+  width: 2em;
+  min-width: 2em;
+}
+
+#defaultLabel, #lightLabel, #sunnyLabel, #retroLabel {
+  width: 4em;
+  min-width: 4em;
+}
+
+#defaultIcon {
+  color: #c011ff;
+}
+
+#lightIcon {
+  color: lightgreen;
+}
+
+#sunnyIcon {
+  color: gold;
+}
+
+#retroIcon {
+  color: #0004e5;
+}
+
+
+
+

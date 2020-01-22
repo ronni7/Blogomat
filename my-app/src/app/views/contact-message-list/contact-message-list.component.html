@@ -1,0 +1,7 @@
+<div class="form-style-background white-text">
+  <h1 class="title">Contact messages list</h1>
+  <div class="align-center div-centered-top-margin">
+    <app-contact-preview (reload)="reloadMessages()" [contactMessage]="contact" *ngFor="let contact of contactList"></app-contact-preview>
+  </div>
+ <app-modal-info (closeEvent)="handleEvent($event)" [hidden]="!actionPerformed" [message]="'Contact message dismissed!'"></app-modal-info>
+</div>

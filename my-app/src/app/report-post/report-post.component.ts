@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TestHttpServiceService} from '../test-http-service.service';
 import {PostReport} from '../../model/PostReport';
+import {ContextService} from "../../service/context.service";
 
 @Component({
   selector: 'app-report-post',
@@ -11,10 +12,10 @@ import {PostReport} from '../../model/PostReport';
 export class ReportPostComponent implements OnInit {
   @Input() postID: number;
   @Output() closeEvent = new EventEmitter<boolean>();
-  selectedOption = 0;
+  selectedOption = '';
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private httpService: TestHttpServiceService) {
+  constructor(private formBuilder: FormBuilder, private httpService: TestHttpServiceService, private userService: ContextService) {
     this.formGroup = this.formBuilder.group(
       {
         subject: ['', [Validators.required]],
@@ -27,16 +28,12 @@ export class ReportPostComponent implements OnInit {
   }
 
   sendMessage() {
-    console.log(this.postID);
-    console.log('zglaszajacy'); // id zglaszajacego, z serwisu z ckontekstem uzytkownika
-    console.log(this.formGroup.value);
     const body: PostReport =
-      new PostReport(this.postID, 1,
+      new PostReport(this.postID, this.userService.getID(),
         this.formGroup.value.subject,
         this.formGroup.value.customSubject, this.formGroup.value.message);
     this.httpService.reportPost(body).subscribe(response => {
       if (response) {
-        //dialog here
         this.close(true);
       }
     });
@@ -47,11 +44,11 @@ export class ReportPostComponent implements OnInit {
   }
 
   onChange($event: any) {
-    this.selectedOption = $event as number;
+    this.selectedOption = $event as string;
   }
 
   show(): boolean {
-    return this.selectedOption.toString() === '5';
+    return this.selectedOption === 'Other';
   }
 
   close(reported?: boolean, $event?) {

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ContextService} from "../../service/context.service";
 
 @Component({
   selector: 'app-test',
@@ -9,11 +10,15 @@ export class TestComponent implements OnInit {
   @Input() text;
   private responsive: boolean;
 
-  constructor() {
+  userRole = this.contextService.getRole();
+  authenticated = this.userRole === ('user' || 'admin');
+
+  constructor(private contextService: ContextService) {
     this.text = 'sample-text';
   }
 
   ngOnInit() {
+
   }
 
   myFunction() {

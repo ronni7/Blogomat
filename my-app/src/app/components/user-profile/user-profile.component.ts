@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ContextService} from '../../service/context.service';
-import {ThemeService} from '../theme.service';
+import {ContextService} from '../../../service/context.service';
+import {ThemeService} from '../../../service/theme.service';
 
 @Component({
   selector: 'app-user-profile',

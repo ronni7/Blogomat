@@ -9,7 +9,7 @@
         <li [hidden]="authenticated" class="tooltip header-navigation-element menu-item-cursor">
           <app-user-profile class=""></app-user-profile>
         </li>
-        <li [hidden]="!authenticated" class="tooltip header-navigation-element menu-item-cursor">
+        <li [hidden]="authenticated" class="tooltip header-navigation-element menu-item-cursor">
           <a routerLink="/admin">Admin</a>
         </li>
       </ul>

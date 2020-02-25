@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ContextService} from "../../service/context.service";
+import {ContextService} from "../../../service/context.service";
 
 @Component({
   selector: 'app-test',

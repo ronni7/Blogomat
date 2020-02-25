@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
-import {Post} from '../../model/Post';
-import {TestHttpServiceService} from '../test-http-service.service';
-import {Comment} from '../../model/Comment';
-import {SocialMedia} from "../../model/SocialMedia";
+import {Post} from '../../../model/Post';
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
+import {Comment} from '../../../model/Comment';
+import {SocialMedia} from "../../../model/SocialMedia";
 
 @Component({
   selector: 'app-post-preview',
@@ -136,7 +136,6 @@ export class PostPreviewComponent implements OnInit {
       return;
     this.commentContent = '';
     this.addCommentVisible = !this.addCommentVisible;
-    console.log(this.addCommentVisible);
   }
 
   toggleCommentFailed() {

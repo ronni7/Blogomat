@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {TestHttpServiceService} from "../../test-http-service.service";
-import {ApplicationContext} from "../../../model/ApplicationContext";
-import {ContextService} from "../../../service/context.service";
-import {ThemeService} from "../../theme.service";
-import {ThemeTO} from "../../../model/ThemeTO";
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
+import {ApplicationContext} from '../../../model/ApplicationContext';
+import {ContextService} from '../../../service/context.service';
+import {ThemeService} from '../../../service/theme.service';
+import {ThemeTO} from '../../../model/ThemeTO';
 
 
 @Component({
@@ -40,7 +40,6 @@ export class LoginPageComponent implements OnInit {
       return; // error handling maybe ?
     }
     this.submittedCorrectly = true;
-    console.log(this.formGroup.value);
     this.httpService.logIn(this.formGroup.value.login, this.formGroup.value.password).subscribe(response => {
       this.contextService.context = response as ApplicationContext;
       this.loadTheme(this.contextService.getID());

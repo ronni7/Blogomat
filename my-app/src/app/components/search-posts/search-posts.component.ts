@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Post} from "../../model/Post";
+import {Post} from "../../../model/Post";
 
 @Component({
   selector: 'app-search-posts',

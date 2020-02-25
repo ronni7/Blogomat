@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {PostReport} from '../../model/PostReport';
-import {TestHttpServiceService} from '../test-http-service.service';
+import {PostReport} from '../../../model/PostReport';
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,7 +14,7 @@ export class ReportPreviewComponent implements OnInit {
   @Output() actionEvent = new EventEmitter<number>();
 
 
-  constructor(  private router: Router,private httpService: TestHttpServiceService) {
+  constructor(private router: Router, private httpService: TestHttpServiceService) {
   }
 
   ngOnInit() {
@@ -28,7 +28,6 @@ export class ReportPreviewComponent implements OnInit {
   }
 
   seePost() {
-    //przejscie na  posta i podanie id posta
     return this.router.navigate(['/preview'], {
       state: {postID: this.report.postID, back: true}
     });

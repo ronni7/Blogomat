@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ContactMessage} from '../../../model/ContactMessage';
-import {TestHttpServiceService} from '../../test-http-service.service';
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
 
 @Component({
   selector: 'app-contact-message-list',

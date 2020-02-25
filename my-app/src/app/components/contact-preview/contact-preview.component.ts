@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ContactMessage} from "../../model/ContactMessage";
-import {TestHttpServiceService} from "../test-http-service.service";
-import {Post} from "../../model/Post";
+import {ContactMessage} from "../../../model/ContactMessage";
+import {TestHttpServiceService} from "../../../service/test-http-service.service";
 
 @Component({
   selector: 'app-contact-preview',

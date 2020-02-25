@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TestHttpServiceService} from '../../test-http-service.service';
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
 import {User} from '../../../model/User';
 import {Post} from '../../../model/Post';
 import {Router} from "@angular/router";

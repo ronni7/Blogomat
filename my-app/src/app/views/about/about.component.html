@@ -6,7 +6,7 @@
     penatibus et magnis. Vel risus commodo viverra maecenas accumsan lacus vel facilisis. Adipiscing elit pellentesque
     habitant morbi tristique senectus et netus. Sit amet facilisis magna etiam tempor orci eu lobortis elementum. Vitae
     tortor condimentum lacinia quis. Pellentesque habitant morbi tristique senectus et netus et malesuada.
-    Share the Lorem Wasai    Privacy
+    Share the Lorem Wasai Privacy
   </div>
 </div>
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" id="contact" class="form div-centered-top-margin">
@@ -35,6 +35,6 @@
     <label id="messageLabel" for="message" class="form-label">Message:</label>
     <textarea formControlName="message" id="message" class="post-textarea form-control"></textarea>
   </div>
-  <input [disabled]="!isValid()" type="submit" value="Send message" id="submit"
+  <input [disabled]="!isFormValid()" type="submit" value="Send message" id="submit"
          class="submit-button button tooltip-transparent"/>
 </form>

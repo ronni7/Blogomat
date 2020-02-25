@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../../model/User';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {TestHttpServiceService} from '../../test-http-service.service';
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register-page',
@@ -12,7 +13,7 @@ export class RegisterPageComponent implements OnInit {
   user: User;
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private httpService: TestHttpServiceService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private httpService: TestHttpServiceService) {
     this.user = new User();
     this.formGroup = this.formBuilder.group(
       {
@@ -35,7 +36,7 @@ export class RegisterPageComponent implements OnInit {
   onSubmit() {
     if (this.isValid()) {
       this.httpService.register(this.formGroup.value as User).subscribe(response => {
-        console.log('Registered', response);
+        this.router.navigate(['/login']);
       });
     }
   }

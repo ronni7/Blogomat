@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {TestHttpServiceService} from '../../test-http-service.service';
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
 import {ContactMessage} from '../../../model/ContactMessage';
 import {Router} from "@angular/router";
 
@@ -31,7 +31,6 @@ export class AboutComponent implements OnInit {
 
   onSubmit() {
     if (this.isFormValid()) {
-      console.log(this.formGroup.value);
       this.httpService.sendContactMessage(this.formGroup.value as ContactMessage).subscribe(response => {
           return this.router.navigate(['/'], {});
         }
@@ -42,7 +41,4 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
   }
 
-  isValid() {
-    return this.formGroup.valid;
-  }
 }

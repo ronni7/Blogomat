@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PostReport} from '../../../model/PostReport';
-import {TestHttpServiceService} from '../../test-http-service.service';
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
 
 @Component({
   selector: 'app-report-list',
@@ -20,7 +20,6 @@ export class ReportListComponent implements OnInit {
     this.httpService.getReports().subscribe(response => {
       if (response) {
         this.reportList = response as PostReport[];
-        console.log('to jest cała list reportow reportu', response);
       }
     });
   }

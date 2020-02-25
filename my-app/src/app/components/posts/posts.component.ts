@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Post} from '../../model/Post';
-import {User} from '../../model/User';
-import {TestHttpServiceService} from '../test-http-service.service';
-import {SearchCriteria} from '../../model/SearchCriteria';
+import {Post} from '../../../model/Post';
+import {User} from '../../../model/User';
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
+import {SearchCriteria} from '../../../model/SearchCriteria';
 
 @Component({
   selector: 'app-posts',

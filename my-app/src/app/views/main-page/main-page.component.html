@@ -11,14 +11,13 @@
   <div *ngIf="selectedAction===1" class="div-centered-top-margin">
     <div id="recent" class="div-centered-top-margin form-style-background">
       <h1 class="content-centered title">Recent</h1>
-      <app-posts [sortBy]="'publishDate'" [order]="'DESC'" [perRow]="2" ></app-posts>
-      <!--per row attribute should be set from user service-->
+      <app-posts [sortBy]="'publishDate'" [order]="'DESC'" [perRow]="2"></app-posts>
     </div>
   </div>
   <div *ngIf="selectedAction===2" class="div-centered-top-margin">
     <div id="best" class="div-centered-top-margin form-style-background">
       <h1 class="content-centered title">Best</h1>
-      <app-posts [sortBy]="'likes'" [order]="'DESC'" [perRow]="2" ></app-posts>
+      <app-posts [sortBy]="'likes'" [order]="'DESC'" [perRow]="2"></app-posts>
     </div>
   </div>
   <div *ngIf="selectedAction===3 " class="form-style-background">

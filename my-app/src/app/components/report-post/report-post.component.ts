@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {TestHttpServiceService} from '../test-http-service.service';
-import {PostReport} from '../../model/PostReport';
-import {ContextService} from "../../service/context.service";
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
+import {PostReport} from '../../../model/PostReport';
+import {ContextService} from "../../../service/context.service";
 
 @Component({
   selector: 'app-report-post',

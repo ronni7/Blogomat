@@ -1,11 +1,11 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UserDetails} from '../../../model/UserDetails';
-import {TestHttpServiceService} from '../../test-http-service.service';
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
 import {Chart} from 'chart.js';
-import {Router} from "@angular/router";
-import {ContextService} from "../../../service/context.service";
-import {PersonalDataSettings} from "../../../model/PersonalDataSettings";
-import {SocialMediaSettings} from "../../../model/SocialMediaSettings";
+import {Router} from '@angular/router';
+import {ContextService} from '../../../service/context.service';
+import {PersonalDataSettings} from '../../../model/PersonalDataSettings';
+import {SocialMediaSettings} from '../../../model/SocialMediaSettings';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   userDetails: UserDetails;
   chart: Chart;
   @ViewChild('canvas', {static: true}) canvas: ElementRef;
-  private edit: boolean = true;
+  private edit = true;
   private userID: number;
   private userSettings: PersonalDataSettings;
   private socialMediaSettings: SocialMediaSettings;
@@ -35,12 +35,6 @@ export class ProfileComponent implements OnInit {
     }
     this.chart = this.createChart();
     this.userDetails = this.httpService.getUserDetails(1);
-    /*
-  this.httpService.getUserDetails(1).subscribe(response => {
-    if (response) {
-      this.userDetails = response as UserDetails;
-    }
-  });*/
     this.httpService.getUserSettings(this.userID).subscribe(response => {
       if (response) {
         this.userSettings = response as PersonalDataSettings;
@@ -52,8 +46,6 @@ export class ProfileComponent implements OnInit {
       }
     });
     this.loadSocialMedia();
-
-
   }
 
   private loadSocialMedia() {
@@ -96,13 +88,12 @@ export class ProfileComponent implements OnInit {
     for (let i = 6; i > 0; i--) {
       labels.push(months[this.getMonthName(date, i - 1)]);
     }
-    console.log(labels, 'daty');
     this.chart = new Chart(this.canvas.nativeElement, {
 
 
       type: 'line',
       data: {
-        labels: labels,
+        labels,
         datasets: [
           {
             label: 'Likes per month',

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Post} from "../../../model/Post";
+import {Post} from '../../../model/Post';
 
 @Component({
   selector: 'app-search-posts',
@@ -9,7 +9,7 @@ import {Post} from "../../../model/Post";
 export class SearchPostsComponent implements OnInit {
   @Input()
   authorLocked: boolean;
-  private posts: Post[];
+  posts: Post[];
   author: string;
 
   constructor() {

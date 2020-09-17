@@ -76,7 +76,7 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  private saveThemeSettings() {
+   saveThemeSettings() {
     this.httpService.saveSelectedThemeName({
       userID: this.userID,
       themeName: this.selectedTheme

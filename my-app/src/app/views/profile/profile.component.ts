@@ -17,10 +17,10 @@ export class ProfileComponent implements OnInit {
   userDetails: UserDetails;
   chart: Chart;
   @ViewChild('canvas', {static: true}) canvas: ElementRef;
-  private edit = true;
-  private userID: number;
-  private userSettings: PersonalDataSettings;
-  private socialMediaSettings: SocialMediaSettings;
+  edit = true;
+  userID: number;
+  userSettings: PersonalDataSettings;
+  socialMediaSettings: SocialMediaSettings;
 
   constructor(private userService: ContextService, private httpService: TestHttpServiceService, private router: Router) {
   }

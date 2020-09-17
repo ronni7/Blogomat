@@ -19,13 +19,13 @@ export class PostPreviewComponent implements OnInit {
   commentCount = 0;
   reportVisible = false;
   expanded = false;
-  private alreadyReported = false;
-  likes: number = 0;
-  private addCommentVisible: boolean = false;
+  alreadyReported = false;
+  likes = 0;
+  addCommentVisible = false;
   commentContent: string;
-  addingCommentFailed: boolean = false;
-  private socialMedia: SocialMedia;
-  private adminBack: boolean = false;
+  addingCommentFailed = false;
+  socialMedia: SocialMedia;
+  adminBack = false;
   @Output() reload = new EventEmitter<boolean>();
 
 

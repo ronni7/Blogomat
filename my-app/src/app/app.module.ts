@@ -11,7 +11,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RegisterPageComponent} from './views/register-page/register-page.component';
 import {FormErrorComponent} from './components/form-error/form-error.component';
-import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {FooterComponent} from './components/footer/footer.component';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {ManagementComponent} from './views/management/management.component';
@@ -70,8 +69,7 @@ import {ContextService} from '../service/context.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    AngularFontAwesomeModule
+    ReactiveFormsModule
   ],
   providers: [DatePipe, ContextService],
   bootstrap: [AppComponent]

@@ -34,7 +34,6 @@ export class PostsComponent implements OnInit {
           }
         },
         error => {
-          console.log('error:', error);
         }
       );
     }

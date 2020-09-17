@@ -143,7 +143,7 @@ export class PostPreviewComponent implements OnInit {
   }
 
   addComment() {
-    if (this.commentContent && this.commentContent.length > 1 && this.commentContent.length < 255) {
+    if (this.commentContent && this.commentContent.length > 8 && this.commentContent.length < 255) {
       this.httpService.addComment(new Comment(this.data.id, new Date(), this.data.author, this.commentContent))
         .subscribe(response => {
           this.getComments(this.data.id);

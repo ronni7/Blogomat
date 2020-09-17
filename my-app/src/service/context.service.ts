@@ -16,12 +16,9 @@ export class ContextService {
 
   set context(value: ApplicationContext) {
     this._context = value;
-    console.log(this._context, 'context');
   }
 
   getRole(): string {
-    console.log(this._context.role, 'moja rola');
-
     return this._context.role;
   }
 

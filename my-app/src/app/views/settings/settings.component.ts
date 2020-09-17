@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {PersonalDataSettings} from '../../../model/PersonalDataSettings';
-import {ThemeService} from "../../../service/theme.service";
-import {TestHttpServiceService} from "../../../service/test-http-service.service";
-import {ContextService} from "../../../service/context.service";
-import {SocialMediaSettings} from "../../../model/SocialMediaSettings";
-import {ThemeTO} from "../../../model/ThemeTO";
+import {ThemeService} from '../../../service/theme.service';
+import {TestHttpServiceService} from '../../../service/test-http-service.service';
+import {ContextService} from '../../../service/context.service';
+import {SocialMediaSettings} from '../../../model/SocialMediaSettings';
+import {ThemeTO} from '../../../model/ThemeTO';
 
 
 @Component({

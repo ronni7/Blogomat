@@ -36,7 +36,8 @@
           <i id="retroIcon" class="fa fa-square"></i>
         </div>
         <div class="content-centered">
-          <input type="submit" value="Save changes" id="submitTheme" class="submit-button button tooltip-transparent" (click)="saveThemeSettings()"/>
+          <input type="submit" value="Save changes" id="submitTheme" class="submit-button button tooltip-transparent"
+                 (click)="saveThemeSettings()"/>
         </div>
       </div>
       <div id="personal-data-panel" class="horizontal stretch">
@@ -82,7 +83,8 @@
                  class="form-label">{{personalDataSettings.postsCount ? 'Visible' : 'Hidden'}}</div>
           </div>
           <div class="content-centered">
-            <input type="submit" value="Save changes" id="submitSaveUserSettings" class="submit-button button tooltip-transparent"
+            <input type="submit" value="Save changes" id="submitSaveUserSettings"
+                   class="submit-button button tooltip-transparent"
                    (click)="saveUserSettings()"/>
           </div>
         </div>
@@ -91,33 +93,35 @@
         <h2 class="content-centered">Social media</h2>
         <div class="form-field">
           <label class="form-label" id="facebookLabel" for="facebook"><i
-            class="icon-fit fa fa-facebook-square"></i></label>
+            class="icon-fit fab fa-facebook-square"></i></label>
           <app-slider (changed)="socialMediaSettings.facebook=$event" [state]="socialMediaSettings.facebook"
                       id="facebook"></app-slider>
           <div id="facebookValue" class="form-label">{{socialMediaSettings.facebook ? 'Visible' : 'Hidden'}}</div>
         </div>
         <div class="form-field">
-          <label class="form-label" id="instagramLabel" for="instagram"><i class="icon-fit fa fa-instagram"></i></label>
+          <label class="form-label" id="instagramLabel" for="instagram"><i
+            class="icon-fit fab fa-instagram"></i></label>
           <app-slider (changed)="socialMediaSettings.instagram=$event" [state]="socialMediaSettings.instagram"
                       id="instagram"></app-slider>
           <div id="instagramValue" class="form-label">{{socialMediaSettings.instagram ? 'Visible' : 'Hidden'}}</div>
         </div>
         <div class="form-field">
           <label class="form-label " id="snapchatLabel" for="snapchat"><i
-            class="icon-fit fa fa-snapchat-square"></i></label>
+            class="icon-fit fab fa-snapchat-square"></i></label>
           <app-slider (changed)="socialMediaSettings.snapchat=$event" [state]="socialMediaSettings.snapchat"
                       id="snapchat"></app-slider>
           <div id="snapchatValue" class="form-label">{{socialMediaSettings.snapchat ? 'Visible' : 'Hidden'}}</div>
         </div>
         <div class="form-field">
           <label class="form-label" id="twitterLabel" for="twitter"><i
-            class="icon-fit fa fa-twitter-square"></i></label>
+            class="icon-fit fab fa-twitter-square"></i></label>
           <app-slider (changed)="socialMediaSettings.twitter=$event" [state]="socialMediaSettings.twitter"
                       id="twitter"></app-slider>
           <div id="twitterValue" class="form-label">{{socialMediaSettings.twitter ? 'Visible' : 'Hidden'}}</div>
         </div>
         <div class="content-centered">
-          <input type="submit" value="Save changes" id="submitSocialMedia" class="submit-button button tooltip-transparent" (click)="saveSocialMediaSettings()"/>
+          <input type="submit" value="Save changes" id="submitSocialMedia"
+                 class="submit-button button tooltip-transparent" (click)="saveSocialMediaSettings()"/>
         </div>
       </div>
     </div>

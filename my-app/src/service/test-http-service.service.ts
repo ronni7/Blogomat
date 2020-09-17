@@ -12,6 +12,9 @@ import {Observable} from 'rxjs';
 import {PersonalDataSettings} from "../model/PersonalDataSettings";
 import {SocialMediaSettings} from "../model/SocialMediaSettings";
 import {ThemeTO} from "../model/ThemeTO";
+import {ApplicationContext} from "../model/ApplicationContext";
+import {SocialMedia} from "../model/SocialMedia";
+import {Theme} from "../model/Theme";
 
 
 @Injectable({
@@ -26,12 +29,12 @@ export class TestHttpServiceService {
     return this.http.get('https://reqres.in/api/users');
   }
 
-  logIn(login: string, password: string): Observable<any> {
-    return this.http.post('http://localhost:8080/user/login', {login, password});
+  logIn(login: string, password: string): Observable<ApplicationContext> {
+    return this.http.post<ApplicationContext>('http://localhost:8080/user/login', {login, password});
   }
 
-  register(user: User): Observable<any> {
-    return this.http.post('https:8080/user/register', user);
+  register(user: User): Observable<User> {
+    return this.http.post<User>('https:8080/user/register', user);
 
   }
 
@@ -144,8 +147,8 @@ export class TestHttpServiceService {
     return mock;
   }
 
-  sendContactMessage(value: ContactMessage): Observable<any> {
-    return this.http.post('http://localhost:8080/user/contactAdmin', value); //
+  sendContactMessage(value: ContactMessage): Observable<void> {
+    return this.http.post<void>('http://localhost:8080/user/contactAdmin', value); //
   }
 
   getUserDetails(userID: number): /*Observable<any>*/ any {
@@ -166,61 +169,60 @@ export class TestHttpServiceService {
 
   }
 
-  getUserSocialMedia(author: string): Observable<any> {
-    return this.http.get('http://localhost:8080/user/getUserSocialMedia/' + author);
+  getUserSocialMedia(author: string): Observable<SocialMedia> {
+    return this.http.get<SocialMedia>('http://localhost:8080/user/getUserSocialMedia/' + author);
   }
 
   saveUserDetails(user: UserDetails) {
     // return this.http.post('https:8080/user/saveUserDetails', user); //todo check if right, may use PUT or user ID in post
-    console.log('this is user', user);
   }
 
-  addPost(post: Post): Observable<any> {
-    return this.http.post('http://localhost:8080/post/add', post);
+  addPost(post: Post): Observable<Post> {
+    return this.http.post<Post>('http://localhost:8080/post/add', post);
   }
 
 
   reportPost(report: PostReport): Observable<any> {
-    return this.http.post('http://localhost:8080/post/reportPost', report);
+    return this.http.post<PostReport>('http://localhost:8080/post/reportPost', report);
 
   }
 
-  getPostsSorted(sortField: string, order: 'ASC' | 'DESC'): Observable<any> {
-    return this.http.get('http://localhost:8080/post/posts' +
+  getPostsSorted(sortField: string, order: 'ASC' | 'DESC'): Observable<Post[]> {
+    return this.http.get<Post[]>('http://localhost:8080/post/posts' +
       '?sort=' + sortField.trim() + '&order=' + order);
   }
 
-  getLikes(postID: number): Observable<any> {
-    return this.http.post('http://localhost:8080/post/getLikes', postID);
+  getLikes(postID: number): Observable<number> {
+    return this.http.post<number>('http://localhost:8080/post/getLikes', postID);
   }
 
-  likePost(postID: number, userID: number): Observable<any> {
-    return this.http.post('http://localhost:8080/post/like', {postID, userID});
+  likePost(postID: number, userID: number): Observable<void> {
+    return this.http.post<void>('http://localhost:8080/post/like', {postID, userID});
   }
 
-  getReports(): Observable<any> {
-    return this.http.get('http://localhost:8080/admin/reports');
+  getReports(): Observable<PostReport[]> {
+    return this.http.get<PostReport[]>('http://localhost:8080/admin/reports');
   }
 
-  getComments(postID: number): Observable<any> {
-    return this.http.post('http://localhost:8080/comment/getComments', postID);
+  getComments(postID: number): Observable<Comment[]> {
+    return this.http.post<Comment[]>('http://localhost:8080/comment/getComments', postID);
   }
 
-  deletePost(postID: number): Observable<any> {
-    return this.http.delete('http://localhost:8080/admin/deletePost/' + postID);
+  deletePost(postID: number): Observable<void> {
+    return this.http.delete<void>('http://localhost:8080/admin/deletePost/' + postID);
 
   }
 
-  deleteReport(reportID: number): Observable<any> {
-    return this.http.delete('http://localhost:8080/admin/deleteReport/' + reportID);
+  deleteReport(reportID: number): Observable<void> {
+    return this.http.delete<void>('http://localhost:8080/admin/deleteReport/' + reportID);
   }
 
-  addComment(commentContent: Comment): Observable<any> {
-    return this.http.post('http://localhost:8080/comment/addComment', commentContent);
+  addComment(commentContent: Comment): Observable<Comment> {
+    return this.http.post<Comment>('http://localhost:8080/comment/addComment', commentContent);
   }
 
-  getPostsSortedByLikes(): Observable<any> {
-    return this.http.get('http://localhost:8080/post/postsSortedByLikes');
+  getPostsSortedByLikes(): Observable<Post[]> {
+    return this.http.get<Post[]>('http://localhost:8080/post/postsSortedByLikes');
   }
 
 
@@ -230,50 +232,50 @@ export class TestHttpServiceService {
     );
   }
 
-  deleteContactMessage(id: number) {
-    return this.http.delete('http://localhost:8080/admin/deleteContactMessage/' + id);
+  deleteContactMessage(id: number): Observable<void> {
+    return this.http.delete<void>('http://localhost:8080/admin/deleteContactMessage/' + id);
   }
 
-  getContactMessages(): Observable<any> {
-    return this.http.get('http://localhost:8080/admin/contactMessages');
+  getContactMessages(): Observable<ContactMessage[]> {
+    return this.http.get<ContactMessage[]>('http://localhost:8080/admin/contactMessages');
   }
 
-  getAuthorPosts(username: string): Observable<any> {
-    return this.http.post('http://localhost:8080/post/postsByAuthorName',
+  getAuthorPosts(username: string): Observable<Post[]> {
+    return this.http.post<Post[]>('http://localhost:8080/post/postsByAuthorName',
       username
     );
   }
 
-  saveSocialMedia(socialMedia: any): Observable<any> {
-    return this.http.post('http://localhost:8080/post/postsByAuthorName', socialMedia
+  saveSocialMedia(socialMedia: any): Observable<SocialMedia> {
+    return this.http.post<SocialMedia> ('http://localhost:8080/post/postsByAuthorName', socialMedia
     );
   }
 
-  getUserSettings(userID: number): Observable<any> {
-    return this.http.get('http://localhost:8080/user/getPersonalDataSettings/' + userID);
+  getUserSettings(userID: number): Observable<PersonalDataSettings> {
+    return this.http.get<PersonalDataSettings>('http://localhost:8080/user/getPersonalDataSettings/' + userID);
   }
 
-  saveUserSettings(personalDataSettings: PersonalDataSettings): Observable<any> {
-    return this.http.post('http://localhost:8080/user/savePersonalDataSettings', personalDataSettings);
+  saveUserSettings(personalDataSettings: PersonalDataSettings): Observable<PersonalDataSettings> {
+    return this.http.post<PersonalDataSettings>('http://localhost:8080/user/savePersonalDataSettings', personalDataSettings);
   }
 
-  getSocialMediaSettings(userID: number): Observable<any> {
-    return this.http.get('http://localhost:8080/user/getSocialMediaSettings/' + userID);
+  getSocialMediaSettings(userID: number): Observable<SocialMediaSettings> {
+    return this.http.get<SocialMediaSettings>('http://localhost:8080/user/getSocialMediaSettings/' + userID);
   }
 
-  saveSocialMediaSettings(socialMediaSettings: SocialMediaSettings): Observable<any> {
-    return this.http.post('http://localhost:8080/user/saveSocialMediaSettings', socialMediaSettings);
+  saveSocialMediaSettings(socialMediaSettings: SocialMediaSettings): Observable<SocialMediaSettings> {
+    return this.http.post<SocialMediaSettings>('http://localhost:8080/user/saveSocialMediaSettings', socialMediaSettings);
   }
 
-  getSelectedThemeName(userID: number): Observable<any> {
-    return this.http.get('http://localhost:8080/user/getSelectedTheme/' + userID);
+  getSelectedThemeName(userID: number): Observable<ThemeTO> {
+    return this.http.get<ThemeTO>('http://localhost:8080/user/getSelectedTheme/' + userID);
   }
 
-  saveSelectedThemeName(themeTO: ThemeTO): Observable<any> {
-    return this.http.post('http://localhost:8080/user/saveSelectedTheme', themeTO);
+  saveSelectedThemeName(themeTO: ThemeTO): Observable<ThemeTO> {
+    return this.http.post<ThemeTO>('http://localhost:8080/user/saveSelectedTheme', themeTO);
   }
 
-  getPostByID(postID: any): Observable<any> {
-    return this.http.get('http://localhost:8080/post/getPost/' + postID);
+  getPostByID(postID: any): Observable<Post> {
+    return this.http.get<Post>('http://localhost:8080/post/getPost/' + postID);
   }
 }

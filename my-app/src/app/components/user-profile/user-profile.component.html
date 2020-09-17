@@ -1,5 +1,5 @@
 <div class="match-parent" *ngIf="visible" (mouseover)="showMenu()">
-  <img id="userImg" src="assets/icons/user-icon-large.png" class="match-parent"/>
+  <img id="userImg" class="match-parent fa fa-user"/>
   <div class="content-centered">
     <ul (mouseover)="showMenu()" [hidden]="menuHidden" class="user-menu menu span" id="user-menu">
       <li (click)="showMenu()" class="tooltip-transparent menu-item-cursor" routerLink="/account">

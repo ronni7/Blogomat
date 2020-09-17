@@ -27,8 +27,8 @@
   </div>
   <div class="horizontal-span stretch"></div>
   <div id="postToolbar" class="horizontal-group post-toolbar justify-content toolbar-item-centered">
-    <div class="vertical-align-center">
-      <i (click)="likePost()" id="likeIt" class="horizontal-item fa fa-thumbs-o-up"></i>
+    <div class="vertical-align-center menu-item-cursor">
+      <div (click)="likePost()"><i (click)="likePost()" id="likeIt" class="horizontal-item fa fa-thumbs-up"></i></div>
       <div class="horizontal-item">{{likes}}</div>
     </div>
 
@@ -54,11 +54,9 @@
   <div>
     <div class="vertical-align-center">
       <div class="horizontal-item">Comments({{commentCount}})</div>
-      <div class="horizontal-item">
-        <i *ngIf="commentCount > 0 && !commentsDropped"
-           class=" fa fa-caret-square-o-down" (click)="dropComments()"></i>
-        <i *ngIf="commentCount > 0 && commentsDropped"
-           class=" fa fa-caret-square-o-up" (click)="dropComments()"></i>
+      <div class="horizontal-item" *ngIf="commentCount > 0">
+        <div [hidden]="!!commentsDropped" (click)="dropComments()"><i class="fa fa-caret-square-up"></i></div>
+        <div [hidden]="!commentsDropped" (click)="dropComments()"><i class="fa fa-caret-square-down"></i></div>
       </div>
       <div id="addComment" class="horizontal-item" (click)="toggleAddComment()"><i class="fa fa-plus-circle"></i></div>
     </div>
@@ -67,8 +65,8 @@
         <textarea id="comment" [(ngModel)]="commentContent" class="form-control" autocomplete="off" [minLength]="8"
                   [maxLength]="256"></textarea>
         <div class="vertical medium-size-text">
-          <i id="check" class="fa fa-check-circle-o" (click)="addComment()"></i>
-          <i id="times" class="fa fa-times-circle-o" (click)="toggleAddComment()"></i>
+          <div (click)="addComment()"><i id="check" class="fa fa-check-circle"></i></div>
+          <div (click)="toggleAddComment()"><i id="times" class="fa fa-times-circle"></i></div>
         </div>
         <app-modal-info (closeEvent)="toggleCommentFailed()" [hidden]="!addingCommentFailed"
                         [message]="'Comment content is too short.\n Minimum 8 characters.'"></app-modal-info>

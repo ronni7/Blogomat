@@ -8,14 +8,14 @@
   <div class="white-text">
     <div id="filter" class="horizontal align-center">
       <label for="filters">Filters</label>
-      <div id="filters" class="small-combo-button" (click)="dropdownStateChange()">
-        <i *ngIf="!dropped" class="icon-fit fa fa-caret-square-o-down"></i>
-        <i *ngIf="dropped" class="icon-fit fa fa-caret-square-o-up"></i>
+      <div id="filters" class="small-combo-button">
+        <div [hidden]="!dropped" (click)="dropdownStateChange()"><i class="fa fa-caret-square-down"></i></div>
+        <div [hidden]="dropped" (click)="dropdownStateChange()"><i class="fa fa-caret-square-up"></i></div>
       </div>
 
     </div>
     <div *ngIf="dropped" class="form-style-background white-text">
-      <div *ngIf="!authorLocked" class="form-field">
+      <div [hidden]="!authorLocked" class="form-field">
         <label id="authorLabel" for="author" class="form-label">Author:</label>
         <input id="author" formControlName="author" class="form-control" type="text" placeholder="Author name..."/>
       </div>
@@ -31,7 +31,7 @@
 
       </div>
       <input class="button tooltip-transparent medium-size-text" type="submit" value="Apply filters"
-              [disabled]="!isFormValid()"/>
+             [disabled]="!isFormValid()"/>
     </div>
   </div>
 </form>
